@@ -1,3 +1,18 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* Shrink the Table of Contents */
+.toc {
+   font-size: 0.9rem;
+   /* Default is usually 1rem. Adjust this number to taste. */
+}
+
+/* Add a shadow to lift the content */
+.center {
+   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+   /* Very subtle shadow */
+   border-radius: 8px;
+   /* Rounds the corners slightly */
+   padding: 2rem;
+   /* Adds space inside the shadow box */
+}

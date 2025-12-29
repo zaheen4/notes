@@ -172,7 +172,7 @@ The 1 MB memory of 8086 is divided into two 512 KB banks:
 * **Word Access (Unaligned):** Requires two separate memory cycles.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="8086 Odd and Even Memory Interfacing">
+  <img src="https://care4you.in/wp-content/uploads/2022/03/Figure-1-Odd-Even-Banks.png" alt="8086 Odd and Even Memory Interfacing">
   <br>
   <em>Figure: Memory Banking in 8086</em>
 </div>
@@ -187,7 +187,7 @@ The 1 MB memory of 8086 is divided into two 512 KB banks:
 This "interleaved" organization allows the 16-bit 8086 to fetch a 16-bit word in a single cycle if the address starts at an even number.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="Hardware Organization of 8086 Memory">
+  <img src="https://physicsteacher.in/wp-content/uploads/2022/04/image-39.png" alt="Hardware Organization of 8086 Memory">
   <br>
   <em>Figure: Hardware Memory Organization</em>
 </div>
@@ -282,7 +282,7 @@ A bus-based architecture connecting three main components:
 3.  **Input/Output (I/O) Devices**
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="Microprocessor Based System Block Diagram">
+  <img src="https://www.researchgate.net/publication/313888501/figure/fig11/AS:464586387267594@1487777434458/Figure-Microprocessor-Based-System-The-jobs-that-a-microcomputer-system-performs-can-be.png" alt="Microprocessor Based System Block Diagram">
   <br>
   <em>Figure: Microprocessor Based System</em>
 </div>
@@ -330,7 +330,7 @@ The 8086 is divided into two asynchronous units:
 2.  **Execution Unit (EU):** Decodes and executes instructions. Contains ALU, General Purpose Registers, Flag Register, and Control Unit.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="Internal Architecture of 8086 BIU and EU">
+  <img src="https://www.eeeguide.com/wp-content/uploads/2018/08/8086-Internal-Architecture.jpg" alt="Internal Architecture of 8086 BIU and EU">
   <br>
   <em>Figure: 8086 Internal Architecture</em>
 </div>
@@ -378,7 +378,7 @@ A Programmable Logic Controller (PLC) consists of:
 6.  **Programming Device:** PC or handheld unit to write code.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="PLC Architecture Diagram">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20231220033019/Structure-of-PLC.png" alt="PLC Architecture Diagram">
   <br>
   <em>Figure: PLC Architecture</em>
 </div>
@@ -401,6 +401,7 @@ $$Physical Address = (Segment \ll 4) + Offset$$.
 *(Refer to Q10 for significance)*.
 **Format:**
 16-bit register. Unused bits are undefined.
+
 `| X | X | X | X | OF | DF | IF | TF | SF | ZF | X | AF | X | PF | X | CF |`
 
 ---
@@ -417,7 +418,7 @@ The **8259A Programmable Interrupt Controller**:
 * It sends **INT** to CPU and puts the vector number on data bus upon **INTA**.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="8259A Block Diagram">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/ZZZ-1.png" alt="8259A Block Diagram">
   <br>
   <em>Figure: 8259A PIC Block Diagram</em>
 </div>
@@ -465,11 +466,11 @@ Key events:
 * **T3:** Data transfer wait state (if needed).
 * **T4:** $$\overline{RD}$$or$$\overline{WR}$$ goes High. Data latched.
 
-<div align="center">
+<!-- <div align="center">
   <img src="REPLACE_WITH_LINK" alt="8086 Memory Read and Write Timing Diagram">
   <br>
   <em>Figure: Memory Read/Write Timing</em>
-</div>
+</div> -->
 
 ---
 
@@ -494,7 +495,7 @@ Segmentation divides the 1 MB memory space into logical segments of up to 64 KB 
 5.  **Release:** DMA de-asserts HRQ, CPU regains control.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="DMA Data Transfer Diagram">
+  <img src="https://miro.medium.com/0*dQXSZiRE1g31I7zE.jpg" alt="DMA Data Transfer Diagram">
   <br>
   <em>Figure: DMA Operation</em>
 </div>
@@ -600,7 +601,7 @@ The 8237 contains:
 * **Data Bus Buffer & Address Buffer:** For bus mastering.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="8237 DMA Controller Block Diagram">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/dmac.png" alt="8237 DMA Controller Block Diagram">
   <br>
   <em>Figure: 8237 DMA Block Diagram</em>
 </div>
@@ -639,7 +640,7 @@ If Physical was `1BFD2`, Segment = 1000H.
 5.  **Receive Buffer (Serial-to-Parallel):** RxD.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="8251A Architecture Diagram">
+  <img src="https://electronicsdesk.com/wp-content/uploads/2019/07/architecture-of-8251.jpg" alt="8251A Architecture Diagram">
   <br>
   <em>Figure: 8251A Architecture</em>
 </div>

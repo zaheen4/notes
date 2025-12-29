@@ -75,7 +75,7 @@ The Flag Register is a 16-bit register containing 9 active flags divided into tw
 * **DF (Direction Flag):** Controls string processing direction (0=Increment, 1=Decrement).
 
 <div align="center">
-  <img src="[https://via.placeholder.com/600x200?text=8086+Flag+Register+Format](https://via.placeholder.com/600x200?text=8086+Flag+Register+Format)" alt="8086 Flag Register">
+  <img src="https://d3kfrrhrj36vzx.cloudfront.net/images/1666892352835_rv3nk754.jpg" alt="8086 Flag Register">
   <br>
   <em>Figure: 8086 Flag Register Layout showing Status and Control Flags</em>
 </div>
@@ -125,7 +125,7 @@ The Flag Register is a 16-bit register containing 9 active flags divided into tw
 **Block Diagram:**
 
 <div align="center">
-  <img src="[https://via.placeholder.com/600x400?text=8051+Microcontroller+Block+Diagram](https://via.placeholder.com/600x400?text=8051+Microcontroller+Block+Diagram)" alt="8051 Block Diagram">
+  <img src="https://aninditadhikary.files.wordpress.com/2011/01/8051blockdiagram.png" alt="8051 Block Diagram">
   <br>
   <em>Figure: Functional Block Diagram of 8051 Microcontroller</em>
 </div>
@@ -202,7 +202,7 @@ To enter BSR mode, the control word written to the Control Register must have th
     * 0 = Reset bit to 0.
 
 <div align="center">
-  <img src="[https://via.placeholder.com/600x200?text=8255+BSR+Mode+Control+Word](https://via.placeholder.com/600x200?text=8255+BSR+Mode+Control+Word)" alt="8255 BSR Control Word">
+  <img src="https://i.ytimg.com/vi/LaThqTwK7K0/maxresdefault.jpg" alt="8255 BSR Control Word">
   <br>
   <em>Figure: 8255 BSR Mode Control Word Format (D7=0)</em>
 </div>

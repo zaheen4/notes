@@ -27,6 +27,7 @@ export const defaultContentPageLayout: PageLayout = {
       showReadingTime: false,
     }),
     Component.TagList(),
+    Component.MobileOnly(Component.TableOfContents()),
   ],
   left: [
     Component.PageTitle(),

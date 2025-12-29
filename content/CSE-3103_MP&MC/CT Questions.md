@@ -16,9 +16,9 @@ publish: true
 **Pin Diagram:**
 
 <div align="center">
-  <img src="[https://via.placeholder.com/400x600?text=8086+Pin+Diagram+DIP40](https://via.placeholder.com/400x600?text=8086+Pin+Diagram+DIP40)" alt="Pin Diagram of 8086 Microprocessor">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221114154946/pindiagramof808611.png" alt="Pin Diagram of 8086 Microprocessor">
   <br>
-  <em>Figure 1: 8086 Microprocessor Pin Configuration (40-pin DIP)</em>
+  <em>Figure: 8086 Microprocessor Pin Configuration (40-pin DIP)</em>
 </div>
 
 ---
@@ -77,7 +77,7 @@ The Flag Register is a 16-bit register containing 9 active flags divided into tw
 <div align="center">
   <img src="[https://via.placeholder.com/600x200?text=8086+Flag+Register+Format](https://via.placeholder.com/600x200?text=8086+Flag+Register+Format)" alt="8086 Flag Register">
   <br>
-  <em>Figure 2: 8086 Flag Register Layout showing Status and Control Flags</em>
+  <em>Figure: 8086 Flag Register Layout showing Status and Control Flags</em>
 </div>
 
 ---
@@ -127,7 +127,7 @@ The Flag Register is a 16-bit register containing 9 active flags divided into tw
 <div align="center">
   <img src="[https://via.placeholder.com/600x400?text=8051+Microcontroller+Block+Diagram](https://via.placeholder.com/600x400?text=8051+Microcontroller+Block+Diagram)" alt="8051 Block Diagram">
   <br>
-  <em>Figure 3: Functional Block Diagram of 8051 Microcontroller</em>
+  <em>Figure: Functional Block Diagram of 8051 Microcontroller</em>
 </div>
 
 ---
@@ -204,5 +204,5 @@ To enter BSR mode, the control word written to the Control Register must have th
 <div align="center">
   <img src="[https://via.placeholder.com/600x200?text=8255+BSR+Mode+Control+Word](https://via.placeholder.com/600x200?text=8255+BSR+Mode+Control+Word)" alt="8255 BSR Control Word">
   <br>
-  <em>Figure 4: 8255 BSR Mode Control Word Format (D7=0)</em>
+  <em>Figure: 8255 BSR Mode Control Word Format (D7=0)</em>
 </div>

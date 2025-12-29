@@ -16,3 +16,68 @@
    padding: 2rem;
    /* Adds space inside the shadow box */
 }
+/* Unified Image Styling */
+img {
+   display: block;
+   /* Allows us to center it */
+   margin: 1.5rem auto;
+   /* Centers image + adds vertical breathing room */
+   max-width: 70%;
+   /* Caps width so it doesn't hit the text edges */
+   height: auto;
+   /* Preserves aspect ratio (no stretching) */
+   border-radius: 4px;
+   /* Slight rounding for a modern feel */
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   /* Optional: lifts image off page */
+}
+
+/* Fix for dark mode specific images if needed */
+:root[saved-theme="dark"] img {
+   opacity: 0.9;
+   /* Optional: Lowers brightness slightly for eye comfort */
+}
+
+/* ------------------------------------------------ */
+/* Fix for HTML Figures (<div align="center">)      */
+/* ------------------------------------------------ */
+
+/* 1. Constrain the container div itself */
+div[align="center"] {
+   max-width: 70%;
+   /* Match your unified figure width */
+   margin: 2rem auto;
+   /* Center the entire block + vertical spacing */
+   display: block;
+   /* Ensure it behaves like a block */
+}
+
+/* 2. Style the image inside to fit perfectly */
+div[align="center"] img {
+   max-width: 100%;
+   /* Ensure it fills the container but doesn't overflow */
+   margin: 0 auto;
+   /* Remove the extra margin we added to global images */
+   display: block;
+   border-radius: 4px;
+   /* Keep the rounded look */
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   /* Keep the shadow */
+}
+
+/* 3. Style the Caption (text inside the <em> tag) */
+div[align="center"] em {
+   display: block;
+   /* Force it to its own line */
+   margin-top: 0.9rem;
+   /* Add space between image and text */
+   // font-family: var(--codeFont);
+   /* Optional: Use code font for technical feel */
+   font-size: 0.9rem;
+   /* Make caption slightly smaller than body text */
+   // color: var(--gray);
+   /* Mute the color so it's not distracting */
+   font-style: normal;
+   /* Optional: Removes italic if you want clean text */
+   line-height: 1.4;
+}

@@ -23,7 +23,7 @@ The Intel 8251 is a **Universal Synchronous/Asynchronous Receiver/Transmitter (U
 ### 2. Draw the Architecture of ARM processor and explain each function in detail.
 
 <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="ARM Architecture Block Diagram">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230426173520/ARM-Processor-and-its-Features.webp" alt="ARM Architecture Block Diagram">
   <br>
   <em>Figure: ARM Processor Architecture</em>
 </div>

@@ -12,11 +12,9 @@ const config: QuartzConfig = {
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
-    analytics: {
-      provider: "plausible",
-    },
+    analytics: null,
     locale: "en-US",
-    baseUrl: "quartz.jzhao.xyz",
+    baseUrl: "zaheen4.github.io/notes",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
@@ -73,7 +71,15 @@ const config: QuartzConfig = {
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
-    filters: [Plugin.RemoveDrafts()],
+    filters: [
+      {
+        name: "Explicit-Publish-Only",
+        shouldPublish(_ctx, [_tree, vfile]) {
+          // Only publish if 'publish' is explicitly set to true
+          return vfile.data.frontmatter?.publish === true
+        },
+      },
+    ],
     emitters: [
       Plugin.AliasRedirects(),
       Plugin.ComponentResources(),

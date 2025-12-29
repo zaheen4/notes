@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Quartz 4",
+    pageTitle: "Home",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -27,26 +27,26 @@ const config: QuartzConfig = {
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#4e4e4e",
-          dark: "#2b2b2b",
-          secondary: "#284b63",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#f7f5f0",       // Cream paper
+          lightgray: "#e8e4d9",   // Subtle line color
+          gray: "#9e9a91",        // Pencil gray
+          darkgray: "#333333",    // Ink black text
+          dark: "#000000",        // Pure black headers
+          secondary: "#d03232",   // Red ink links
+          tertiary: "#b82828",    // Darker red hover
+          highlight: "rgba(208, 50, 50, 0.15)",
+          textHighlight: "#e6e1cf88",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#d4d4d4",
-          dark: "#ebebec",
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#1c1c1c",       // Blackboard
+          lightgray: "#333333",   // Chalk lines
+          gray: "#777777",        // Faded chalk
+          darkgray: "#dddddd",    // White chalk text
+          dark: "#ffffff",        // Bright white headers
+          secondary: "#ff6b6b",   // Pastel red links
+          tertiary: "#ff8787",    // Lighter red hover
+          highlight: "rgba(255, 107, 107, 0.15)",
+          textHighlight: "#d0b05088",
         },
       },
     },

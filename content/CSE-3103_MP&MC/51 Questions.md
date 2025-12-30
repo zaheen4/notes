@@ -1,7 +1,7 @@
 ---
 publish: true
 ---
- ### 1. Discuss how 8251 is used for serial communication of data.
+### 1. Discuss how 8251 is used for serial communication of data.
 
 The Intel 8251 is a **Universal Synchronous/Asynchronous Receiver/Transmitter (USART)**. It acts as an interface between a microprocessor (which processes data in parallel) and a serial communication device (like a modem or terminal).
 
@@ -172,7 +172,7 @@ The 1 MB memory of 8086 is divided into two 512 KB banks:
 * **Word Access (Unaligned):** Requires two separate memory cycles.
 
 <div align="center">
-  <img src="https://care4you.in/wp-content/uploads/2022/03/Figure-1-Odd-Even-Banks.png" alt="8086 Odd and Even Memory Interfacing">
+  <img src="https://www.eeeguide.com/wp-content/uploads/2018/08/Memory-Addressing-Modes-of-8086.jpg" alt="8086 Odd and Even Memory Interfacing">
   <br>
   <em>Figure: Memory Banking in 8086</em>
 </div>
@@ -460,17 +460,23 @@ The CPU checks the **Flags Register**.
 
 ### 34. Draw the Memory READ and WRITE timing diagram.
 
-Key events:
-* **T1:** ALE High, Address on AD bus.
-* **T2:** ALE Low. $$\overline{RD}$$or$$\overline{WR}$$ goes Low. AD bus switches to Data mode.
-* **T3:** Data transfer wait state (if needed).
-* **T4:** $$\overline{RD}$$or$$\overline{WR}$$ goes High. Data latched.
+The timing diagram typically shows 3 T-states ($$T_1$$to$$T_3$$).
+* **Read:** $$\overline{RD}$$ goes low during T2/T3. Data is sampled by CPU at end of T3/start of T4.
 
-<!-- <div align="center">
-  <img src="REPLACE_WITH_LINK" alt="8086 Memory Read and Write Timing Diagram">
+<div align="center">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240129112709/image-67.webp" alt="Memory Read Timing Diagram">
   <br>
-  <em>Figure: Memory Read/Write Timing</em>
-</div> -->
+  <em>Figure: Memory Read Cycle</em>
+</div>
+
+* **Write:** $$\overline{WR}$$goes low during T2/T3. Data is output by CPU early and written to memory when$$\overline{WR}$$ goes high.
+
+<div align="center">
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/20250213122018721045/image-68-1.webp" alt="Memory Write Timing Diagram">
+  <br>
+  <em>Figure: Memory Write Cycle</em>
+</div>
+
 
 ---
 

@@ -22,7 +22,7 @@ img {
    /* Allows us to center it */
    margin: 1.5rem auto;
    /* Centers image + adds vertical breathing room */
-   max-width: 70%;
+   max-width: 80%;
    /* Caps width so it doesn't hit the text edges */
    height: auto;
    /* Preserves aspect ratio (no stretching) */
@@ -44,7 +44,7 @@ img {
 
 /* 1. Constrain the container div itself */
 div[align="center"] {
-   max-width: 70%;
+   max-width: 80%;
    /* Match your unified figure width */
    margin: 2rem auto;
    /* Center the entire block + vertical spacing */

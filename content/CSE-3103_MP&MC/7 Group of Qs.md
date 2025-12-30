@@ -228,7 +228,7 @@ To allow 16-bit data transfer in one cycle, memory is split into two 8-bit banks
 * **Odd Bank (High):** Connected to D8-D15. Enabled by **$$\overline{BHE}$$ = 0**. Stores data at odd addresses (1, 3, 5).
 
 <div align="center">
-  <img src="https://care4you.in/wp-content/uploads/2022/03/Figure-1-Odd-Even-Banks.png" alt="Even and Odd Memory Bank Interfacing">
+  <img src="https://www.eeeguide.com/wp-content/uploads/2018/08/Memory-Addressing-Modes-of-8086.jpg·" alt="Even and Odd Memory Bank Interfacing">
   <br>
   <em>Figure: Even/Odd Banking</em>
 </div>

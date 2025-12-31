@@ -18,11 +18,20 @@ export default ((opts?: Options) => {
           <a href="https://quartz.jzhao.xyz/">Quartz v{version}</a> © {year}
         </p>
         <ul>
-          {Object.entries(links).map(([text, link]) => (
-            <li>
-              <a href={link}>{text}</a>
-            </li>
-          ))}
+          {Object.entries(links).map(([text, link]) => {
+            // Check if the link is an internal anchor (like "#") or a relative path
+            const isInternal = link.startsWith("#") || link.startsWith("/")
+            return (
+              <li>
+        <a
+          href={link}
+          target={isInternal ? "_self" : "_blank"}
+        >
+          {text}
+        </a>
+      </li>
+    )
+  })}
         </ul>
       </footer>
     )

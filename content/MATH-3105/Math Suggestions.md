@@ -118,7 +118,7 @@ publish: true
 
 # Vector (Chap-5 to 6)
 
-### 32__ [p-]<br>
+### 32__ [p-]
 
 ### 33__ [p-91]
 ![[Pasted image 20251231164244.png]]![[Pasted image 20251231164306.png]]<br>
@@ -159,9 +159,9 @@ publish: true
 ### 45__ [p-136]
 ![[Pasted image 20251231165620.png]]<br>
 <br><br>
-*Following questions are from **
-# [[Sheet](#book-c)]
+*Following questions are from [[This Sheet](#book-c)]*
 
+# Sheet
 ### 1__ State green theorem given a vector field $F = siny \hat{\mathbf{i}} + x(1+cosy) \hat{\mathbf{j}}$. Evaluate the line integral $\int_{c}^{} f \, \mathrm{d}r$ given by $x^2 + y^2 = a^2$
 <br>
 

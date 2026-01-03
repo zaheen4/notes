@@ -81,3 +81,18 @@ div[align="center"] em {
    /* Optional: Removes italic if you want clean text */
    line-height: 1.4;
 }
+/* Fix anchor clicking accuracy */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   scroll-margin-top: 4rem;
+   /* Adds a buffer zone above headers */
+}
+
+/* Ensure smooth scrolling doesn't get "stuck" */
+html {
+   scroll-behavior: auto;
+}

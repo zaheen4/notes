@@ -57,9 +57,11 @@ publish: true
 
 *Following questions are from **[[Book 2](#book-b)]***
 
+> **(Page_num - 7) =  (Suggestion_Page_num)**
+
 # Vector (Chap-1)
 
-### 15__ [p-3] Scalar Field and Vector field
+### 15__ [p-10] Scalar Field and Vector field
 ![[Pasted image 20251231162257.png]]<br>
 
 ### 16__ [p-17]

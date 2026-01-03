@@ -172,7 +172,7 @@ publish: true
 ### 3__ Verify Green''s theorem in the plane $\int_{c}^{}(x^2 + xy) \,  \mathrm{d}x + (x^2 - y^2) \, \mathrm{d}y$ where $c$ is square formed by lines $x = \pm 1 ; y = \pm 1$
 
 
-### 4__ Find $\int \int_{s}^{} fn \, \mathrm{d}s$ where $f = (2x + 3z)\hat{\mathbf{i}} - (xz+y)\hat{\mathbf{j}} + (y^2 +2z) \hat{\mathbf{k}}$ where $s$ is surface of the sphere having center (3, -1, 2) and radius 3
+### 4__[*important*]   Find $\int \int_{s}^{} fn \, \mathrm{d}s$ where $f = (2x + 3z)\hat{\mathbf{i}} - (xz+y)\hat{\mathbf{j}} + (y^2 +2z) \hat{\mathbf{k}}$ where $s$ is surface of the sphere having center (3, -1, 2) and radius 3
 
 
 ### 5__ Evaluate double integral $\int \int_{s}^{} fn \, \mathrm{d}s$ where $F = x\hat{\mathbf{i}} + y\hat{\mathbf{j}} + (z^2-1)\hat{\mathbf{k}}$ and $s$ is closed surface by plane z = 0 and z = 1 and cylinder $x^2+y^2 = 4$, also verify divergence theorem

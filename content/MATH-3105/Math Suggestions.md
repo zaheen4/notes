@@ -173,6 +173,90 @@ publish: true
 
 
 ### 4__[*important*]   Find $\int \int_{s}^{} fn \, \mathrm{d}s$ where $f = (2x + 3z)\hat{\mathbf{i}} - (xz+y)\hat{\mathbf{j}} + (y^2 +2z) \hat{\mathbf{k}}$ where $s$ is surface of the sphere having center (3, -1, 2) and radius 3
+**Evaluation of the Surface Integral**
+
+**Problem:** Evaluate $\iint_{S} \mathbf{F} \cdot \mathbf{n} \, dS$ where:
+
+- $\mathbf{F} = (2x + 3z)\hat{\mathbf{i}} - (xz+y)\hat{\mathbf{j}} + (y^2 +2z) \hat{\mathbf{k}}$
+    
+- $S$ is the surface of the sphere with center $(3, -1, 2)$ and radius $r = 3$.
+    
+
+**Method: Divergence Theorem (Gauss's Theorem)**
+
+Since $S$ is a closed surface enclosing a volume $V$ (the ball), we can use the Divergence Theorem, which relates the flux of a vector field through a closed surface to the divergence of the field inside the volume.
+
+$$\iint_{S} \mathbf{F} \cdot \mathbf{n} \, dS = \iiint_{V} (\nabla \cdot \mathbf{F}) \, dV$$
+
+**Step 1: Calculate the Divergence of $\mathbf{F}$**
+
+The divergence of $\mathbf{F} = P\hat{\mathbf{i}} + Q\hat{\mathbf{j}} + R\hat{\mathbf{k}}$ is given by:
+
+$$\nabla \cdot \mathbf{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+
+Given components:
+
+- $P = 2x + 3z$
+    
+- $Q = -(xz + y) = -xz - y$
+    
+- $R = y^2 + 2z$
+    
+
+Calculate partial derivatives:
+
+1. $\frac{\partial P}{\partial x} = \frac{\partial}{\partial x}(2x + 3z) = 2$
+    
+2. $\frac{\partial Q}{\partial y} = \frac{\partial}{\partial y}(-xz - y) = -1$
+    
+3. $\frac{\partial R}{\partial z} = \frac{\partial}{\partial z}(y^2 + 2z) = 2$
+    
+
+Substitute into the divergence formula:
+
+$$\nabla \cdot \mathbf{F} = 2 + (-1) + 2 = 3$$
+
+The divergence is a constant value of **3**.
+
+**Step 2: Evaluate the Volume Integral**
+
+Substitute the divergence back into the volume integral:
+
+$$\iiint_{V} (\nabla \cdot \mathbf{F}) \, dV = \iiint_{V} 3 \, dV$$
+
+Since 3 is a constant, we can pull it out of the integral:
+
+$$= 3 \iiint_{V} dV$$
+
+The integral $\iiint_{V} dV$ represents the total volume of the sphere $V$.
+
+
+**Step 3: Calculate the Volume of the Sphere**
+
+The volume of a sphere is calculated using the formula $V = \frac{4}{3}\pi r^3$.
+
+Given:
+
+- Radius $r = 3$
+    
+
+$$V = \frac{4}{3} \pi (3)^3$$
+$$V = \frac{4}{3} \pi (27)$$
+$$V = 4 \pi (9)$$
+$$V = 36\pi$$
+
+
+**Step 4: Final Calculation**
+
+Multiply the divergence by the volume:
+
+$$\text{Integral} = 3 \times (36\pi)$$
+$$\text{Integral} = 108\pi$$
+
+
+**Answer:**
+
+$$\iint_{S} \mathbf{F} \cdot \mathbf{n} \, dS = 108\pi$$<br>
 
 
 ### 5__ Evaluate double integral $\int \int_{s}^{} fn \, \mathrm{d}s$ where $F = x\hat{\mathbf{i}} + y\hat{\mathbf{j}} + (z^2-1)\hat{\mathbf{k}}$ and $s$ is closed surface by plane z = 0 and z = 1 and cylinder $x^2+y^2 = 4$, also verify divergence theorem

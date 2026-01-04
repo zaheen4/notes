@@ -6,8 +6,6 @@ publish: true
 * [Book1 - Calculus 10th edition](https://drive.google.com/file/d/150QKf_Or61R8OJhulK2INHuzHB7OQgvt/view?usp=drive_link) <a id="book-a"></a>
 * [Book2 - Vector Analysis Schaum](https://drive.google.com/file/d/1VZpr_6l6HQkhPXvIYfBPtHf0CJF41De0/view?usp=drive_link) <a id="book-b"></a>
 * [Sheet PDF](https://drive.google.com/file/d/1_6vJEfQw-5mz1vHlHR_USjfUoiNAVXGS/view?usp=sharing) <a id="book-c"></a><br>
-> 
-> Important questions are marked with asterisks(***)<br><br>
 
 *Following questions are from **[[Book 1](#book-a)]***
 
@@ -45,12 +43,12 @@ State the second partial test for the function of two variable
 Locate all relative extrema and saddle points of $f(x, y) = 4xy − x^4 − y^4$
 ![[Pasted image 20251231153659.png]]![[Pasted image 20251231153727.png]]<br>
 
-### 9__ [p-1017] **
+### 9__ [p-1017] 
 Find the points on the sphere $x^2 + y^2 + z^2 = 36$ that are closest to and farthest from the point (1, 2, 2)
 ![[Pasted image 20251231154034.png]]![[Pasted image 20251231153951.png]]<br>
 
 
-### 10__ [p-1019] **
+### 10__ [p-1019] 
 Use Lagrange multipliers to determine the dimensions of a rectangular box, open at the top, having a volume of 32 ft$^3$ , and requiring the least amount of material for its construction.
 ![[Pasted image 20251231155204.png]]<br>
 
@@ -137,16 +135,16 @@ Define partial derivative of a function of two variables.
 
 ### 32__ [p-]
 
-### 33__ [p-91] ***
+### 33__ [p-91] 
 ![[Pasted image 20251231164244.png]]![[Pasted image 20251231164306.png]]<br>
 
-### 34__ [p-94] ***
+### 34__ [p-94] 
 ![[Pasted image 20251231164414.png]]![[Pasted image 20251231164430.png]]![[Pasted image 20251231164448.png]]<br>
 
 ### 35__ [p-95]
 ![[Pasted image 20251231164524.png]]<br>
 
-### 36__ [p-98] ***
+### 36__ [p-98] 
 ![[Pasted image 20251231164605.png]]![[Pasted image 20251231164636.png]]![[Pasted image 20251231164648.png]]<br>
 
 ### 37__ [p-100]
@@ -155,16 +153,16 @@ Define partial derivative of a function of two variables.
 ### 38__ [p-104]
 ![[Pasted image 20251231164759.png]]![[Pasted image 20251231164821.png]]<br>
 
-### 39__ [p-105] ***
+### 39__ [p-105] 
 ![[Pasted image 20251231164859.png]]![[Pasted image 20251231164920.png]]<br>
 
-### 40__ [p-108] ***
+### 40__ [p-108] 
 ![[Pasted image 20251231165009.png]]<br>
 # Vector (Chap-6)
 ### 41__ [p-113]
 ![[Pasted image 20251231165219.png]]<br>
 
-### 42__ [p-113] ***
+### 42__ [p-113] 
 ![[Pasted image 20251231165246.png]]![[Pasted image 20251231165257.png]]<br>
 
 ### 43__ [p-124]
@@ -173,13 +171,13 @@ Define partial derivative of a function of two variables.
 ### 44__ [p-134]
 ![[Pasted image 20251231165457.png]]![[Pasted image 20251231165533.png]]![[Pasted image 20251231165546.png]]![[Pasted image 20251231165558.png]]<br>
 
-### 45__ [p-136] ***
+### 45__ [p-136] 
 ![[Pasted image 20251231165620.png]]<br>
 <br><br>
 *Following questions are from [[This Sheet](#book-c)]*
 
 # Sheet (cont. of chap 6)
-## 1__ ***
+## 1__ 
 State green theorem given a vector field $F = siny \hat{\mathbf{i}} + x(1+cosy) \hat{\mathbf{j}}$. Evaluate the line integral $\int_{c}^{} f \, \mathrm{d}r$ given by $x^2 + y^2 = a^2$<br><br>
 **Statement of Green's Theorem**
 
@@ -225,7 +223,7 @@ $$\text{Area of Circle} = \pi a^2$$
 $$\pi a^2$$
 <br>
 ___
-## 2__  ***
+## 2__  
 Green's theorem $\int_{c}^{}(3x^2 + 8y^2) \, \mathrm{d}x + (4y - 6xy)\, \mathrm{d}y$ bounded by $y=\sqrt x$ and $y = x^2$<br><br>
 **The Formula**
 
@@ -280,7 +278,7 @@ $$= -11 \left( \frac{3}{10} \right)$$
 $$-\frac{33}{10} \quad \text{or} \quad -3.3$$
 
 ___
-## 3__  ***
+## 3__  
 Verify Green''s theorem in the plane $\int_{c}^{}(x^2 + xy) \,  \mathrm{d}x + (x^2 - y^2) \, \mathrm{d}y$ where $c$ is square formed by lines $x = \pm 1 ; y = \pm 1$<br><br>
 **Green's Theorem Formula**
 
@@ -335,7 +333,7 @@ Theorem Verified.
 
 
 ___
-## 4__ ***
+## 4__ 
 [*important*] Find $\int \int_{s}^{} fn \, \mathrm{d}s$ where $f = (2x + 3z)\hat{\mathbf{i}} - (xz+y)\hat{\mathbf{j}} + (y^2 +2z) \hat{\mathbf{k}}$ where $s$ is surface of the sphere having center (3, -1, 2) and radius 3<br><br>
 **Divergence Theorem**
 
@@ -370,7 +368,7 @@ $$V = \frac{4}{3}\pi r^3 = \frac{4}{3}\pi (3)^3 = \frac{4}{3}\pi (27) = 36\pi$$
 $$\text{Integral} = 3 \times 36\pi = 108\pi$$
 
 ___
-## 5__  ***
+## 5__  
 Evaluate double integral $\int \int_{s}^{} fn \, \mathrm{d}s$ where $F = x\hat{\mathbf{i}} + y\hat{\mathbf{j}} + (z^2-1)\hat{\mathbf{k}}$ and $s$ is closed surface by plane z = 0 and z = 1 and cylinder $x^2+y^2 = 4$, also verify divergence theorem<br><br>
 **Theorem Statement**
 
@@ -445,7 +443,7 @@ $$\text{LHS} = 12\pi, \quad \text{RHS} = 12\pi$$
 Theorem Verified.
 
 ___
-## 6__  ***
+## 6__  
 Verify Stock theorem for the function, $f=x^2\hat{\mathbf{i}}+xy\hat{\mathbf{j}}$ integrated round the square in plane $z=0$ where sides are $x=y=0$ and $x=y=a$<br><br>
 **Stokes' Theorem Formula**
 
@@ -502,7 +500,7 @@ $$\text{LHS} = \frac{a^3}{2}, \quad \text{RHS} = \frac{a^3}{2}$$
 Theorem Verified.
 
 ___
-## 7__  ***
+## 7__  
 Using Stock theorem, evaluate $\int_{c}(xy) \, \mathrm{d}x + (xy) \, \mathrm{d}y$ where ''$c$" is square in $xy$ plane with vertices (1, 0), (-1, 0), (0, 1) and (0, -1)<br><br>
 **The Theorem**
 

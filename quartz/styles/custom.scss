@@ -15,6 +15,7 @@
    /* Rounds the corners slightly */
    padding: 2rem;
    /* Adds space inside the shadow box */
+   overflow: hidden;
    @media all and (max-width: 400px) {
       padding: 1rem;
    }

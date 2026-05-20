@@ -365,223 +365,348 @@ $y_2 = -0.625 + 6(0.1287) = -0.625 + 0.7722 \approx \mathbf{0.1471}$
 
 ## 5 _____
 
-### a) Solve Laplace's equation $u_{xx} + u_{yy} = 0$ for the following Figure.
+### a. Solve Laplace's equation $u_{xx} + u_{yy} = 0$ for the following Figure.
 
-**1. Formulation and Boundary Conditions:**
-Laplace's equation on a grid can be solved using the standard 5-point finite difference formula, where the value at any interior node is the average of its four immediate neighbors:  
-$$u_{i,j} = \frac{1}{4}(u_{i-1,j} + u_{i+1,j} + u_{i,j-1} + u_{i,j+1})$$
+**Grid Layout:**
 
-From the given figure, we have a $4 \times 4$ grid giving 9 interior nodes ($u_1$ to $u_9$). The boundary conditions are:
-* **Top:** The nodes correspond to values $100, 100, 100$. (The corners are $50$, but are not needed for the standard 5-point interior stencil).
-* **Left, Right, Bottom:** All boundary values are $0$.
+| Boundary | Values |
+|----------|--------|
+| **Top** | 50, 100, 100, 100, 50 |
+| **Bottom** | 0, 0, 0, 0, 0 |
+| **Left** | 0, 0, 0, 0 |
+| **Right** | 0, 0, 0, 0 |
 
-**2. Exploiting Symmetry:**
-The boundary conditions are perfectly symmetric with respect to the vertical centerline. Therefore, the interior nodes will also be symmetric:
-* $u_1 = u_3$
-* $u_4 = u_6$
-* $u_7 = u_9$
+**Five-Point Finite Difference Formula:**
 
-This reduces the problem from 9 unknowns to just 6 independent unknowns ($u_1, u_2, u_4, u_5, u_7, u_8$).
+$$
+u_{i,j} = \frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1})
+$$
 
-**3. Setting up the Linear System:**
-Applying the 5-point formula to the independent nodes:  
+**System of Equations:**
+
+| Unknown | Equation |
+|---------|----------|
+| $u_1$ | $4u_1 - u_2 - u_4 = 0$ |
+| $u_2$ | $-u_1 + 4u_2 - u_3 - u_5 = 0$ |
+| $u_3$ | $-u_2 + 4u_3 - u_6 = 0$ |
+| $u_4$ | $-u_1 + 4u_4 - u_5 - u_7 = 0$ |
+| $u_5$ | $-u_2 - u_4 + 4u_5 - u_6 - u_8 = 0$ |
+| $u_6$ | $-u_3 - u_5 + 4u_6 - u_9 = 0$ |
+| $u_7$ | $-u_4 + 4u_7 - u_8 = 100$ |
+| $u_8$ | $-u_5 - u_7 + 4u_8 - u_9 = 100$ |
+| $u_9$ | $-u_6 - u_8 + 4u_9 = 100$ |
+
+**Symmetry Consideration:**
+
+The problem is symmetric about the vertical centerline ($x = 2$):
+- $u_1 = u_3$
+- $u_4 = u_6$
+- $u_7 = u_9$
+
+**Reduced System (6 equations, 6 unknowns):**
+
 $$
 \begin{aligned}
-\text{Node } u_1 &: 4u_1 - u_2 - u_4 = 0 \\
-\text{Node } u_2 &: 4u_2 - u_1 - u_3 - u_5 = 0 \implies 4u_2 - 2u_1 - u_5 = 0 \\
-\text{Node } u_4 &: 4u_4 - u_1 - u_5 - u_7 = 0 \\
-\text{Node } u_5 &: 4u_5 - u_4 - u_6 - u_2 - u_8 = 0 \implies 4u_5 - 2u_4 - u_2 - u_8 = 0 \\
-\text{Node } u_7 &: 4u_7 - u_4 - u_8 = 100 \\
-\text{Node } u_8 &: 4u_8 - u_7 - u_9 - u_5 = 100 \implies 4u_8 - 2u_7 - u_5 = 100
+4u_1 - u_2 - u_4 &= 0 \\
+-2u_1 + 4u_2 - u_5 &= 0 \\
+-u_1 + 4u_4 - u_5 - u_7 &= 0 \\
+-u_2 - 2u_4 + 4u_5 - u_8 &= 0 \\
+-u_4 + 4u_7 - u_8 &= 100 \\
+-u_5 - 2u_7 + 4u_8 &= 100
 \end{aligned}
 $$
 
-**4. Solving the System:**
-Through algebraic substitution (expressing variables from bottom to top):
-* From $u_1$: $u_2 = 4u_1 - u_4$
-* Substitute into $u_2$: $4(4u_1 - u_4) - 2u_1 - u_5 = 0 \implies u_5 = 14u_1 - 4u_4$
-* Substitute into $u_4$: $4u_4 - u_1 - (14u_1 - 4u_4) - u_7 = 0 \implies u_7 = 8u_4 - 15u_1$
-* Substitute into $u_5$: $4(14u_1 - 4u_4) - 2u_4 - (4u_1 - u_4) - u_8 = 0 \implies u_8 = 52u_1 - 17u_4$
+**Solution:**
 
-Now plug $u_7$ and $u_8$ into the remaining two equations:  
+| Unknown | Exact Value | Approximate |
+|---------|-------------|-------------|
+| $u_1 = u_3$ | $\frac{50}{7}$ | **7.14** |
+| $u_2$ | $\frac{275}{28}$ | **9.82** |
+| $u_4 = u_6$ | $\frac{75}{4}$ | **18.75** |
+| $u_5$ | $25$ | **25.00** |
+| $u_7 = u_9$ | $\frac{300}{7}$ | **42.86** |
+| $u_8$ | $\frac{1475}{28}$ | **52.68** |
+
+**Final Grid:**
+
+| Col1 | Col2 | Col3 | Col4 | Col5 |
+|------|------|------|------|------|
+| 50 | 100 | 100 | 100 | 50 |
+| 0 | **7.14** | **9.82** | **7.14** | 0 |
+| 0 | **18.75** | **25.00** | **18.75** | 0 |
+| 0 | **42.86** | **52.68** | **42.86** | 0 |
+| 0 | 0 | 0 | 0 | 0 |
+
+### b. Solve the Poisson equation $u_{xx} + u_{yy} = -10(x^2 + y^2 + 10)$ in the domain of the following Figure.
+
+**Given:**
+- Domain: $0 \leq x \leq 3$, $0 \leq y \leq 3$
+- Grid spacing: $h = 1$
+- Boundary condition: $u = 0$ on all boundaries
+- Source function: $f(x,y) = -10(x^2 + y^2 + 10)$
+
+**Interior Points:**
+
+| Point | Coordinates | $f(x,y)$ |
+|-------|-------------|----------|
+| A ($u_1$) | (1, 1) | $-10(1 + 1 + 10) = -120$ |
+| B ($u_2$) | (2, 1) | $-10(4 + 1 + 10) = -150$ |
+| C ($u_3$) | (1, 2) | $-10(1 + 4 + 10) = -150$ |
+| D ($u_4$) | (2, 2) | $-10(4 + 4 + 10) = -180$ |
+
+**Five-Point Formula for Poisson Equation:**
+
+$$
+4u_{i,j} - u_{i+1,j} - u_{i-1,j} - u_{i,j+1} - u_{i,j-1} = h^2 f_{i,j}
+$$
+
+**System of Equations:**
+
 $$
 \begin{aligned}
-4(8u_4 - 15u_1) - u_4 - (52u_1 - 17u_4) &= 100 \implies 48u_4 - 112u_1 = 100 \implies 12u_4 - 28u_1 = 25 \\
-4(52u_1 - 17u_4) - 2(8u_4 - 15u_1) - (14u_1 - 4u_4) &= 100 \implies 224u_1 - 80u_4 = 100 \implies 56u_1 - 20u_4 = 25
+4u_1 - u_2 - u_3 &= -120 \\
+-u_1 + 4u_2 - u_4 &= -150 \\
+-u_1 + 4u_3 - u_4 &= -150 \\
+-u_2 - u_3 + 4u_4 &= -180
 \end{aligned}
 $$
 
-Solving this resulting $2 \times 2$ system:
-Multiply the first equation by $2$ to get $-56u_1 + 24u_4 = 50$. Add it to the second equation:  
+**Symmetry:** $u_2 = u_3$ (symmetric about $x = y$ diagonal)
+
+**Reduced System:**
+
 $$
 \begin{aligned}
-(-56u_1 + 24u_4) + (56u_1 - 20u_4) &= 50 + 25 \\
-4u_4 &= 75 \implies \mathbf{u_4 = 18.75}
+4u_1 - 2u_2 &= -120 \\
+-u_1 + 4u_2 - u_4 &= -150 \\
+-2u_2 + 4u_4 &= -180
 \end{aligned}
 $$
 
-Substitute $u_4$ back into $-28u_1 + 12(18.75) = 25$:  
+**Solving:**
+
 $$
 \begin{aligned}
--28u_1 + 225 &= 25 \\
-28u_1 &= 200 \implies \mathbf{u_1 = \frac{50}{7} \approx 7.143}
+\text{From (1): } u_1 &= \frac{u_2}{2} - 30 \\
+\text{From (3): } u_4 &= \frac{u_2}{2} - 45 \\
+\text{Substitute into (2): } -\left(\frac{u_2}{2} - 30\right) + 4u_2 - \left(\frac{u_2}{2} - 45\right) &= -150 \\
+3u_2 + 75 &= -150 \\
+u_2 &= -75
 \end{aligned}
 $$
 
-Finally, substitute $u_1$ and $u_4$ back to find the remaining values:  
+**Results:**
+
+| Point | Value |
+|-------|-------|
+| $u_1$ (A) | $\frac{u_2}{2} - 30 = -37.5 - 30 =$ **$-67.5$** |
+| $u_2$ (B) | **$-75$** |
+| $u_3$ (C) | **$-75$** |
+| $u_4$ (D) | $\frac{u_2}{2} - 45 = -37.5 - 45 =$ **$-82.5$** |
+
+**Final Grid:**
+
+| Col1 | Col2 | Col3 | Col4 |
+|------|------|------|------|
+| 0 | 0 | 0 | 0 |
+| 0 | **-67.5** | **-75** | 0 |
+| 0 | **-75** | **-82.5** | 0 |
+| 0 | 0 | 0 | 0 |
+
+## 6 _____
+
+### a. From the Taylor series for $y(x)$, find $y(0.1)$ correct to four decimal places if $y(x)$ satisfies $y' = x - y^2$ and $y(0) = 1$.
+
+**Given:**
+- $y' = x - y^2$
+- $y(0) = 1$
+- Find $y(0.1)$
+
+**Taylor Series Formula:**
+$$
+y(x) = y(0) + x y'(0) + \frac{x^2}{2!} y''(0) + \frac{x^3}{3!} y'''(0) + \frac{x^4}{4!} y^{(4)}(0) + \cdots
+$$
+
+**Derivatives at $x = 0$:**
+
+| Derivative | Expression | Value at $x=0$ |
+|------------|------------|----------------|
+| $y'(x)$ | $x - y^2$ | $0 - 1^2 = -1$ |
+| $y''(x)$ | $1 - 2yy'$ | $1 - 2(1)(-1) = 3$ |
+| $y'''(x)$ | $-2(y')^2 - 2yy''$ | $-2(-1)^2 - 2(1)(3) = -8$ |
+| $y^{(4)}(x)$ | $-6y'y'' - 2yy'''$ | $-6(-1)(3) - 2(1)(-8) = 34$ |
+
+**Substitute into Taylor Series:**
 $$
 \begin{aligned}
-u_2 &= 4\left(\frac{50}{7}\right) - 18.75 = \mathbf{\frac{275}{28} \approx 9.821} \\
-u_5 &= 14\left(\frac{50}{7}\right) - 4(18.75) = 100 - 75 = \mathbf{25} \\
-u_7 &= 8(18.75) - 15\left(\frac{50}{7}\right) = 150 - \frac{750}{7} = \mathbf{\frac{300}{7} \approx 42.857} \\
-u_8 &= 52\left(\frac{50}{7}\right) - 17(18.75) = \frac{2600}{7} - \frac{1275}{4} = \mathbf{\frac{1475}{28} \approx 52.679}
+y(0.1) &= 1 + (0.1)(-1) + \frac{(0.1)^2}{2}(3) + \frac{(0.1)^3}{6}(-8) + \frac{(0.1)^4}{24}(34) \\
+&= 1 - 0.1 + 0.015 - 0.0013333 + 0.0001417 \\
+&= 0.9138084
 \end{aligned}
 $$
 
-*(Due to symmetry: $u_3 = 7.143$, $u_6 = 18.75$, $u_9 = 42.857$)*
+**Result:**
+**$y(0.1) = 0.9138$**
 
----
+### b. Using the modified Euler method find the value of $y$ satisfying the equation, $dy/dx = \log_e(x+y)$ for $x = 1.2$ and $x = 1.4$, correct to four decimal places, take $h = 0.2$ and $y(1) = 2$.
 
-### b) Solve the Poisson equation $u_{xx} + u_{yy} = -10(x^2 + y^2 + 10)$ in the domain of the following Figure.
+**Given:**
+- $f(x,y) = \log_e(x+y)$
+- $x_0 = 1, y_0 = 2$
+- $h = 0.2$
+- Find $y(1.2)$ and $y(1.4)$
 
-**1. Formulation:**
-The standard finite difference formula for the Poisson equation is:  
-$$\frac{u_{i-1,j} - 2u_{i,j} + u_{i+1,j}}{h^2} + \frac{u_{i,j-1} - 2u_{i,j} + u_{i,j+1}}{k^2} = f(x_i, y_j)$$
+**Modified Euler Formula (Heun's Method):**
+$$
+y_{n+1} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_n + h f(x_n, y_n)) \right]
+$$
 
-Given the grid step sizes are $h = 1$ and $k = 1$, the equation simplifies to:  
-$$4u_{i,j} - u_{i-1,j} - u_{i+1,j} - u_{i,j-1} - u_{i,j+1} = -f(x_i, y_j)$$
+**Iteration 1: Find $y(1.2)$**
 
-**2. Calculating the Right-Hand Side (RHS):**
-The given forcing function is $f(x,y) = -10(x^2 + y^2 + 10)$. We calculate $-f(x,y) = 10(x^2 + y^2 + 10)$ for each interior node coordinates $(x, y)$:
-* **$u_1$ at $A(1, 1)$:** $10(1^2 + 1^2 + 10) = 10(12) = 120$
-* **$u_2$ at $B(2, 1)$:** $10(2^2 + 1^2 + 10) = 10(15) = 150$
-* **$u_3$ at $C(1, 2)$:** $10(1^2 + 2^2 + 10) = 10(15) = 150$
-* **$u_4$ at $D(2, 2)$:** $10(2^2 + 2^2 + 10) = 10(18) = 180$
+| Step | Calculation | Value |
+|------|-------------|-------|
+| $f(x_0, y_0)$ | $\log_e(1 + 2)$ | $1.098612$ |
+| Predictor $y^*$ | $2 + 0.2(1.098612)$ | $2.219722$ |
+| $f(x_1, y^*)$ | $\log_e(1.2 + 2.219722)$ | $1.229546$ |
+| Corrector $y_1$ | $2 + 0.1(1.098612 + 1.229546)$ | $2.232816$ |
 
-**3. Setting up the Linear System:**
-Given $u = 0$ on all boundaries, applying the simplified formula yields a $4 \times 4$ system:  
+**$y(1.2) = 2.2328$**
+
+**Iteration 2: Find $y(1.4)$**
+
+| Step | Calculation | Value |
+|------|-------------|-------|
+| $f(x_1, y_1)$ | $\log_e(1.2 + 2.232816)$ | $1.233347$ |
+| Predictor $y^*$ | $2.232816 + 0.2(1.233347)$ | $2.479485$ |
+| $f(x_2, y^*)$ | $\log_e(1.4 + 2.479485)$ | $1.355619$ |
+| Corrector $y_2$ | $2.232816 + 0.1(1.233347 + 1.355619)$ | $2.491713$ |
+
+**$y(1.4) = 2.4917$**
+
+**Summary Table:**
+
+| $x$ | $y(x)$ |
+|-----|--------|
+| 1.0 | 2.0000 |
+| 1.2 | **2.2328** |
+| 1.4 | **2.4917** |
+
+## 7 _____
+
+### a. Compute $y(0.2)$ by Runge-Kutta method of 4th order for the differential equation $\frac{dy}{dx} = xy + y^2, y(0) = 1$.
+
+**Given:**
+- $f(x,y) = xy + y^2$
+- $x_0 = 0, y_0 = 1, h = 0.2$
+
+**RK4 Formulas:**
 $$
 \begin{aligned}
-4u_1 - u_2 - u_3 &= 120 \\
-4u_2 - u_1 - u_4 &= 150 \\
-4u_3 - u_1 - u_4 &= 150 \\
-4u_4 - u_2 - u_3 &= 180
+k_1 &= h f(x_0, y_0) \\
+k_2 &= h f(x_0 + h/2, y_0 + k_1/2) \\
+k_3 &= h f(x_0 + h/2, y_0 + k_2/2) \\
+k_4 &= h f(x_0 + h, y_0 + k_3) \\
+y_1 &= y_0 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)
 \end{aligned}
 $$
 
-**4. Solving the System:**
-Notice the symmetry between the second and third equations. We can immediately deduce that $u_2 = u_3$. Substituting $u_3$ with $u_2$:  
+**Step Calculations:**
+
+| Step | Expression | Value |
+|------|------------|-------|
+| $k_1$ | $0.2 \times f(0, 1) = 0.2 \times (0 + 1)$ | $0.200000$ |
+| $k_2$ | $0.2 \times f(0.1, 1.1) = 0.2 \times (0.11 + 1.21)$ | $0.264000$ |
+| $k_3$ | $0.2 \times f(0.1, 1.132) = 0.2 \times (0.1132 + 1.281424)$ | $0.278925$ |
+| $k_4$ | $0.2 \times f(0.2, 1.278925) = 0.2 \times (0.255785 + 1.635649)$ | $0.378287$ |
+
+**Final Calculation:**
 $$
 \begin{aligned}
-4u_1 - 2u_2 &= 120 \implies 2u_1 - u_2 = 60 \implies u_2 = 2u_1 - 60 \\
-4u_2 - u_1 - u_4 &= 150 \\
-4u_4 - 2u_2 &= 180 \implies 2u_4 - u_2 = 90 \implies u_4 = \frac{u_2 + 90}{2}
+y(0.2) &= 1 + \frac{1}{6}(0.200000 + 2(0.264000) + 2(0.278925) + 0.378287) \\
+&= 1 + \frac{1.664137}{6} \\
+&= 1.277356
 \end{aligned}
 $$
 
-Substitute $u_2$ into the expression for $u_4$:  
+**Result:**
+**$y(0.2) = 1.2774$**
+
+### b. The velocity $v$ ms$^{-1}$ of a moving car is given at fixed intervals of time $t$ (second) as follows. Find the distance covered by the car in 12 seconds.
+
+**Given Data:**
+
+| $t$ | 0 | 2 | 4 | 6 | 8 | 10 | 12 |
+|-----|---|---|---|---|---|----|----|
+| $v$ | 4 | 6 | 16 | 34 | 60 | 94 | 136 |
+
+**Method:** Simpson's 1/3 Rule (since $n=6$ is even)
+$$
+\text{Distance} = \int_0^{12} v \, dt \approx \frac{h}{3} \left[ (v_0 + v_6) + 4(v_1 + v_3 + v_5) + 2(v_2 + v_4) \right]
+$$
+
+**Calculation:**
 $$
 \begin{aligned}
-u_4 &= \frac{(2u_1 - 60) + 90}{2} \\
-u_4 &= \frac{2u_1 + 30}{2} = u_1 + 15
+\text{Distance} &= \frac{2}{3} \left[ (4 + 136) + 4(6 + 34 + 94) + 2(16 + 60) \right] \\
+&= \frac{2}{3} \left[ 140 + 4(134) + 2(76) \right] \\
+&= \frac{2}{3} \left[ 140 + 536 + 152 \right] \\
+&= \frac{2}{3} \times 828 \\
+&= 552
 \end{aligned}
 $$
 
-Now substitute both $u_2$ and $u_4$ into the middle equation ($4u_2 - u_1 - u_4 = 150$):  
+**Result:**
+**Distance = 552 meters**
+
+### c. What do you mean by interpolation? Apply Lagrange's formula to find the form of the function $f(x)$ using the following table:
+
+**Interpolation:**
+Interpolation is a method of estimating unknown values that fall between known data points. It constructs new data points within the range of a discrete set of known data points.
+
+**Given Data:**
+
+| $x$ | 0 | 1 | 2 | 3 | 4 |
+|-----|---|---|---|---|---|
+| $f(x)$ | 3 | 6 | 11 | 18 | 27 |
+
+**Lagrange's Interpolation Formula:**
+$$
+f(x) = \sum_{i=0}^{4} f(x_i) L_i(x) \quad \text{where} \quad L_i(x) = \prod_{j \neq i} \frac{x - x_j}{x_i - x_j}
+$$
+
+**Basis Polynomials:**
+
+| $i$ | $L_i(x)$ Expression | Simplified Coefficient |
+|-----|---------------------|------------------------|
+| 0 | $\frac{(x-1)(x-2)(x-3)(x-4)}{(0-1)(0-2)(0-3)(0-4)}$ | $\frac{1}{24}(x-1)(x-2)(x-3)(x-4)$ |
+| 1 | $\frac{(x-0)(x-2)(x-3)(x-4)}{(1-0)(1-2)(1-3)(1-4)}$ | $-\frac{1}{6}x(x-2)(x-3)(x-4)$ |
+| 2 | $\frac{(x-0)(x-1)(x-3)(x-4)}{(2-0)(2-1)(2-3)(2-4)}$ | $\frac{1}{4}x(x-1)(x-3)(x-4)$ |
+| 3 | $\frac{(x-0)(x-1)(x-2)(x-4)}{(3-0)(3-1)(3-2)(3-4)}$ | $-\frac{1}{6}x(x-1)(x-2)(x-4)$ |
+| 4 | $\frac{(x-0)(x-1)(x-2)(x-3)}{(4-0)(4-1)(4-2)(4-3)}$ | $\frac{1}{24}x(x-1)(x-2)(x-3)$ |
+
+**Substitute Values:**
 $$
 \begin{aligned}
-4(2u_1 - 60) - u_1 - (u_1 + 15) &= 150 \\
-8u_1 - 240 - 2u_1 - 15 &= 150 \\
-6u_1 - 255 &= 150 \\
-6u_1 &= 405 \implies \mathbf{u_1 = 67.5}
+f(x) &= 3L_0(x) + 6L_1(x) + 11L_2(x) + 18L_3(x) + 27L_4(x) \\
+&= \frac{3}{24}P_0(x) - \frac{6}{6}P_1(x) + \frac{11}{4}P_2(x) - \frac{18}{6}P_3(x) + \frac{27}{24}P_4(x)
 \end{aligned}
 $$
 
-Finally, substitute $u_1$ back to find the remaining values:  
+**Simplification:**
+Expanding and combining terms yields:
 $$
-\begin{aligned}
-u_2 &= 2(67.5) - 60 = 135 - 60 = \mathbf{75} \\
-u_3 &= \mathbf{75} \\
-u_4 &= 67.5 + 15 = \mathbf{82.5}
-\end{aligned}
+f(x) = x^2 + 2x + 3
 $$
 
-## Numerical Methods Solutions
+**Verification:**
+- $f(0) = 0 + 0 + 3 = 3$ ✓
+- $f(1) = 1 + 2 + 3 = 6$ ✓
+- $f(2) = 4 + 4 + 3 = 11$ ✓
+- $f(3) = 9 + 6 + 3 = 18$ ✓
+- $f(4) = 16 + 8 + 3 = 27$ ✓
 
-Here are the step-by-step solutions for the numerical methods problems. I have ensured that the inline equations are formatted with the proper soft line breaks for Quartz as requested.
-
-### 6. a) From the Taylor series for $y(x)$, find $y(0.1)$ correct to four decimal places if $y' = x - y^2$ and $y(0) = 1$.
-
-**Formulation:** The Taylor series expansion for $y(x)$ around $x_0 = 0$ is:  
-$y(x) \approx y(0) + x y'(0) + \frac{x^2}{2!} y''(0) + \frac{x^3}{3!} y'''(0) + \frac{x^4}{4!} y^{(4)}(0)$  
-
-**Calculate Derivatives at $x = 0$:** Given $y_0 = 1$ when $x_0 = 0$:  
-$y(0) = \mathbf{1}$  
-
-1st Derivative: $y' = x - y^2$  
-$y'(0) = 0 - (1)^2 = \mathbf{-1}$  
-
-2nd Derivative: $y'' = 1 - 2yy'$  
-$y''(0) = 1 - 2(1)(-1) = 1 + 2 = \mathbf{3}$  
-
-3rd Derivative: $y''' = -2(y')^2 - 2yy''$  
-$y'''(0) = -2(-1)^2 - 2(1)(3) = -2 - 6 = \mathbf{-8}$  
-
-4th Derivative: $y^{(4)} = -4y'y'' - 2(y'y'' + yy''') = -6y'y'' - 2yy'''$  
-$y^{(4)}(0) = -6(-1)(3) - 2(1)(-8) = 18 + 16 = \mathbf{34}$  
-
-**Substitute into Taylor Series for $x = 0.1$:** $$
-\begin{aligned}
-y(0.1) &\approx 1 + (0.1)(-1) + \frac{(0.1)^2}{2}(3) + \frac{(0.1)^3}{6}(-8) + \frac{(0.1)^4}{24}(34) \\
-y(0.1) &\approx 1 - 0.1 + 0.015 - 0.001333 + 0.000142 \\
-y(0.1) &\approx 0.913809
-\end{aligned}
-$$
-
-**Result:** Correct to four decimal places, $y(0.1) = \mathbf{0.9138}$.
-
----
-
-### 6. b) Using the modified Euler method find the value of $y$ satisfying the equation, $dy/dx = \log_e(x+y)$ for $x = 1.2$ and $x = 1.4$, correct to four decimal places, take $h = 0.2$ and $y(1) = 2$.
-
-**Formulation:** $f(x, y) = \ln(x + y)$  
-$x_0 = 1.0, \quad y_0 = 2.0, \quad h = 0.2$  
-
-**Step 1: Calculate $y$ at $x_1 = 1.2$** Predictor:  
-$y_1^{(0)} = y_0 + h f(x_0, y_0) = 2.0 + 0.2 \ln(1 + 2) = 2.0 + 0.2(1.09861) = \mathbf{2.21972}$  
-
-Corrector 1:  
-$y_1^{(1)} = y_0 + \frac{h}{2} [f(x_0, y_0) + f(x_1, y_1^{(0)})]$  
-$y_1^{(1)} = 2.0 + 0.1 [\ln(3) + \ln(1.2 + 2.21972)] = 2.0 + 0.1 [1.09861 + 1.22956] = \mathbf{2.23282}$  
-
-Corrector 2:  
-$y_1^{(2)} = 2.0 + 0.1 [\ln(3) + \ln(1.2 + 2.23282)] = 2.0 + 0.1 [1.09861 + 1.23338] = \mathbf{2.23320}$  
-
-Corrector 3:  
-$y_1^{(3)} = 2.0 + 0.1 [\ln(3) + \ln(1.2 + 2.23320)] = 2.0 + 0.1 [1.09861 + 1.23349] = \mathbf{2.23321}$  
-
-Corrector 4:  
-$y_1^{(4)} = 2.0 + 0.1 [\ln(3) + \ln(1.2 + 2.23321)] = \mathbf{2.23321}$  *(Converged)* **Result 1:** $y(1.2) \approx \mathbf{2.2332}$  
-
-**Step 2: Calculate $y$ at $x_2 = 1.4$** Using $x_1 = 1.2$ and $y_1 = 2.23321$:  
-
-Predictor:  
-$y_2^{(0)} = y_1 + h f(x_1, y_1) = 2.23321 + 0.2 \ln(1.2 + 2.23321) = 2.23321 + 0.2(1.23350) = \mathbf{2.47991}$  
-
-Corrector 1:  
-$y_2^{(1)} = y_1 + \frac{h}{2} [f(x_1, y_1) + f(x_2, y_2^{(0)})]$  
-$y_2^{(1)} = 2.23321 + 0.1 [\ln(3.43321) + \ln(1.4 + 2.47991)] = 2.23321 + 0.1 [1.23350 + 1.35581] = \mathbf{2.49214}$  
-
-Corrector 2:  
-$y_2^{(2)} = 2.23321 + 0.1 [1.23350 + \ln(1.4 + 2.49214)] = 2.23321 + 0.1 [1.23350 + 1.35896] = \mathbf{2.49246}$  
-
-Corrector 3:  
-$y_2^{(3)} = 2.23321 + 0.1 [1.23350 + \ln(1.4 + 2.49246)] = 2.23321 + 0.1 [1.23350 + 1.35904] = \mathbf{2.49247}$  
-
-Corrector 4:  
-$y_2^{(4)} = 2.23321 + 0.1 [1.23350 + \ln(1.4 + 2.49247)] = \mathbf{2.49247}$  *(Converged)* **Result 2:** $y(1.4) \approx \mathbf{2.4925}$  
-
-***
+**Result:**
+**$f(x) = x^2 + 2x + 3$**
 
 
 # Solve for 2023
@@ -592,7 +717,11 @@ $y_2^{(4)} = 2.23321 + 0.1 [1.23350 + \ln(1.4 + 2.49247)] = \mathbf{2.49247}$  *
 
 **Formulation:**
 Rewrite the equation in the form $x = g(x)$:
+
+
 $$3x = \cos x + 1 \implies x = \frac{\cos x + 1}{3}$$
+
+
 Let $g(x) = \frac{\cos x + 1}{3}$. Since $|g'(x)| = \left|-\frac{\sin x}{3}\right| \le \frac{1}{3} < 1$, the iteration will converge. We will use an initial guess of $x_0 = 0.6$ (in radians).
 
 **Iterations:**
@@ -741,7 +870,11 @@ $3x + y + 2z = 16$
 
 
 $$A = \begin{bmatrix} 2 & -6 & 8 \\ 5 & 4 & -3 \\ 3 & 1 & 2 \end{bmatrix}$$
+
+
 Using the Doolittle algorithm, we decompose $A$ into Lower ($L$) and Upper ($U$) triangular matrices:
+
+
 $$L = \begin{bmatrix} 1 & 0 & 0 \\ 2.5 & 1 & 0 \\ 1.5 & \frac{10}{19} & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & -6 & 8 \\ 0 & 19 & -23 \\ 0 & 0 & \frac{40}{19} \end{bmatrix}$$
 
 **2. Solve $Ly = B$ (Forward Substitution):**
@@ -827,8 +960,14 @@ $$y(0.4) = 1.19600 + \frac{1}{6}(0.18912 + 0.35898 + 0.35870 + 0.16881) = \mathb
 
 ### a. Solve the following system of linear equations using Cramer's rule:
 $5x - 2y + 9z = -7$
+
+
 $-2x + y - 4z = 5$
+
+
 $3x - 10y - 8z = 0$
+
+
 
 **1. Calculate the main determinant ($D$):**  
 $$
@@ -882,7 +1021,11 @@ $$
 
 **Formulation:**
 The Taylor series expansion up to the first five terms is:
+
+
 $$y(x) \approx y_0 + h y'_0 + \frac{h^2}{2!} y''_0 + \frac{h^3}{3!} y'''_0 + \frac{h^4}{4!} y^{(4)}_0$$
+
+
 Given $x_0 = 0$, $y_0 = 1$, and step size $h = 0.1$.
 
 **Calculate Derivatives at $x=0$:**

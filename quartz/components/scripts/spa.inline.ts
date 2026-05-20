@@ -81,6 +81,9 @@ async function _navigate(url: URL, isBack: boolean = false) {
   const event: CustomEventMap["prenav"] = new CustomEvent("prenav", { detail: {} })
   document.dispatchEvent(event)
 
+  // Save current scroll position before navigating away
+  sessionStorage.setItem(window.location.pathname, window.scrollY.toString())
+
   // cleanup old
   cleanupFns.forEach((fn) => fn())
   cleanupFns.clear()
@@ -110,7 +113,17 @@ async function _navigate(url: URL, isBack: boolean = false) {
       const el = document.getElementById(decodeURIComponent(url.hash.substring(1)))
       el?.scrollIntoView()
     } else {
-      window.scrollTo({ top: 0 })
+      const savedScroll = sessionStorage.getItem(url.pathname)
+      if (savedScroll) {
+        window.scrollTo({ top: parseInt(savedScroll) })
+      } else {
+        window.scrollTo({ top: 0 })
+      }
+    }
+  } else {
+    const savedScroll = sessionStorage.getItem(url.pathname)
+    if (savedScroll) {
+      window.scrollTo({ top: parseInt(savedScroll) })
     }
   }
 

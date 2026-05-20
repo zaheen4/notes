@@ -257,7 +257,9 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
 
     .mobile-explorer {
       margin: 0;
-      padding: 5px;
+      padding: 10px;
+      min-height: 44px;
+      min-width: 44px;
       z-index: 101;
 
       .lucide-menu {
@@ -269,6 +271,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
 
 .mobile-no-scroll {
   @media all and ($mobile) {
+    overflow: hidden;
     overscroll-behavior: none;
   }
 }

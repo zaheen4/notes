@@ -229,12 +229,13 @@ a {
       grid-area: grid-sidebar-left;
       flex-direction: column;
       @media all and ($mobile) {
-        gap: 0;
+        gap: 0.5rem;
         align-items: center;
         position: initial;
         display: flex;
         height: unset;
         flex-direction: row;
+        flex-wrap: wrap;
         padding: 0;
         padding-top: 2rem;
       }
@@ -252,7 +253,7 @@ a {
         position: initial;
         height: unset;
         width: 100%;
-        flex-direction: row;
+        flex-direction: column;
         padding: 0;
         & > * {
           flex: 1;
@@ -320,8 +321,10 @@ input[type="checkbox"] {
   margin-inline-end: 0.2rem;
   margin-inline-start: -1.4rem;
   appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  cursor: pointer;
 
   &:checked {
     border-color: var(--secondary);
@@ -330,10 +333,10 @@ input[type="checkbox"] {
     &::after {
       content: "";
       position: absolute;
-      left: 4px;
+      left: 5px;
       top: 1px;
-      width: 4px;
-      height: 8px;
+      width: 5px;
+      height: 10px;
       display: block;
       border: solid var(--light);
       border-width: 0 2px 2px 0;
@@ -577,6 +580,9 @@ video {
 
 .spacer {
   flex: 2 1 auto;
+  @media all and ($mobile) {
+    flex: 1 1 auto;
+  }
 }
 
 div:has(> .overflow) {

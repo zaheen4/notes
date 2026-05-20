@@ -231,6 +231,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     searchLayout.classList.remove("display-results")
     searchType = "basic" // reset search type after closing
     searchButton.focus()
+    document.documentElement.classList.remove("mobile-no-scroll")
   }
 
   function showSearch(searchTypeNew: SearchType) {
@@ -238,6 +239,7 @@ async function setupSearch(searchElement: Element, currentSlug: FullSlug, data: 
     if (sidebar) sidebar.style.zIndex = "1"
     container.classList.add("active")
     searchBar.focus()
+    document.documentElement.classList.add("mobile-no-scroll")
   }
 
   let currentHover: HTMLInputElement | null = null

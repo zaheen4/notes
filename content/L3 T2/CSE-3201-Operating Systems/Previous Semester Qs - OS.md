@@ -49,7 +49,7 @@ A process is a program in execution. It is an active entity that includes the pr
 * **Terminated:** The process has finished execution and its resources are being deallocated.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250825180931532602/bb.webp" alt="Process State Transition Diagram">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_0.png" alt="Process State Transition Diagram">
 <br>
 <em>Figure: Process state transition diagram showing the lifecycle of a process</em>
 </div>
@@ -145,7 +145,7 @@ Paging is a memory management scheme that eliminates the need for contiguous all
     * **Page Offset (d):** Combined with the base address to define the exact physical memory address.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20251103124955198748/cpu.webp" alt="Paging Hardware Diagram">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_1.png" alt="Paging Hardware Diagram">
 <br>
 <em>Figure: Paging hardware architecture showing logical to physical address translation</em>
 </div>
@@ -171,7 +171,7 @@ The following strategies are used to select a free hole from a list of available
 ### b. Draw the resource-allocation graph where P, R and E represent Process, Resource and Edge sets. P= {P1, P2, P3}; R = {R1, R2, R3}; E = {P1->R1, P2->R3, P3->R2, R1->P2, R2->P2, R2->P1, R3->P3}; Resources R1, & R3 have one instance and R2 has two instances. Is there any deadlock? Explain. (4)
 
 <div align="center">
-<img src="L3 T2/CSE-3201-Operating Systems/attachments/Gemini_Generated_Image_zhmjwvzhmjwvzhmj 2.png" alt="Resource Allocation Graph">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/Gemini_Generated_Image_zhmjwvzhmjwvzhmj.png" alt="Resource Allocation Graph">
 <br>
 <em>Figure: Resource allocation graph showing the current system state with process and resource assignments</em>
 </div>
@@ -263,7 +263,7 @@ Fragmentation is a memory management issue where memory space is used inefficien
 Compaction is a solution to external fragmentation. The OS reshuffles memory contents to place all free memory together in one large, contiguous block. This is only possible if relocation is dynamic and done at execution time.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20251206121458040636/2.webp" alt="Memory Compaction Process">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_2.png" alt="Memory Compaction Process">
 <br>
 <em>Figure: Memory state before and after the compaction process, showing consolidation of free space</em>
 </div>
@@ -350,7 +350,7 @@ $$EAT = 130 \text{ ns}$$
 A PCB (or Task Control Block) is a critical data structure in the operating system kernel that stores all information necessary to manage a specific process. It acts as the repository for any process-specific data, including process state, program counter, CPU registers, CPU scheduling information, memory-management information, accounting information, and I/O status.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250825182631440618/1223.webp" alt="CPU Context Switch Diagram">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_3.png" alt="CPU Context Switch Diagram">
 <br>
 <em>Figure: CPU context switch detailing the state save and restore operations between processes</em>
 </div>
@@ -397,7 +397,7 @@ Context switching is the process of storing the state (context) of the currently
 * **Example:** Process A is running. A timer interrupt occurs. The OS saves Process A's registers and program counter to PCB_A, loads Process B's saved state from PCB_B into the hardware registers, and resumes Process B.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250825182631440618/1223.webp" alt="Context Switch Mechanism">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_4.png" alt="Context Switch Mechanism">
 <br>
 <em>Figure: Mechanism of a CPU context switch between two processes showing state saving and restoring</em>
 </div>
@@ -526,7 +526,7 @@ A deadlock can arise if and only if the following four conditions hold simultane
 A Process Control Block (PCB) is a dedicated data structure created and maintained by the Operating System for every active process. It serves as the repository for any process-specific information required to manage the process's execution and lifecycle. Key components include the process state, program counter, CPU registers, CPU scheduling info, memory management info, and I/O status.
 
 <div align="center">
-<img src="https://www.tutorialspoint.com/operating_system/images/structure_of_the_process_control_block.jpg" alt="Structure of a Process Control Block">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_5.jpg" alt="Structure of a Process Control Block">
 <br>
 <em>Figure: Typical structure of a Process Control Block (PCB) containing process execution context</em>
 </div>
@@ -589,7 +589,7 @@ Initial Available = (3, 2, 1, 1)
 * **Compaction:** A technique used to overcome external fragmentation. The OS shuffles memory contents to consolidate all free memory into a single, large contiguous block, allowing larger processes to be loaded.
 
 <div align="center">
-<img src="REPLACE_WITH_LINK" alt="Swapping and Compaction Mechanisms">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/Pastedimage20260605142220.png" alt="Swapping and Compaction Mechanisms">
 <br>
 <em>Figure: Memory management operations showing process swapping to disk and memory compaction</em>
 </div>
@@ -670,7 +670,7 @@ The dispatcher is a critical operating system module that gives control of the C
 When an interrupt occurs, the system saves the current context (registers, program counter, state) of the executing process into its Process Control Block (PCB). The OS then selects a new process, loads its saved context from its respective PCB into the hardware registers, and resumes execution.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250825182631440618/1223.webp" alt="Context Switch Diagram">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_6.png" alt="Context Switch Diagram">
 <br>
 <em>Figure: CPU state save and restore operations during a context switch between two processes</em>
 </div>
@@ -690,7 +690,7 @@ When an interrupt occurs, the system saves the current context (registers, progr
 * **Terminated:** The process has finished execution and is releasing resources.
 
 <div align="center">
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20250825180931532602/bb.webp" alt="Process State Transition Diagram">
+<img src="L3 T2/CSE-3201-Operating Systems/attachments/img_7.png" alt="Process State Transition Diagram">
 <br>
 <em>Figure: Five-state process lifecycle and transition paths</em>
 </div>

@@ -222,6 +222,7 @@ A Regular Expression (RE) is an algebraic formula that describes a regular langu
 The regular expression $(a+b)$ represents a union, meaning the language accepts exactly one character: either an "a" OR a "b".
 
 We can construct a simple Deterministic Finite Automaton (DFA) for this:
+
 - **States:** $Q = \{q_0, q_1, q_{trap}\}$
 - **Start State:** $q_0$
 - **Accept State:** $F = \{q_1\}$
@@ -268,6 +269,7 @@ The generated output string for the input 1011 is **0100**, which is correctly t
 To design a sequence detector for "111000", we need states to track the successful prefix of the sequence. In a Mealy machine, the output is placed on the transition itself, and we output **1** only when the final '0' of the sequence is read.
 
 **State Definitions:**
+
 - $q_0$: Initial state (no part of sequence matched)
 - $q_1$: Matched "1"
 - $q_2$: Matched "11"
@@ -312,6 +314,7 @@ Assuming this means "contains at least one '1'", the string can have any combina
 
 **ii) Write the regular expression for $L = \{w \mid w \text{ contain at least two a's or exactly 2 b's}\}$**
 This language is the union of two independent conditions. We construct the expression for each and combine them using the union operator (`+`).
+
 - **Condition 1 (At least two 'a's):** `(a+b)* a (a+b)* a (a+b)*`
 - **Condition 2 (Exactly two 'b's):** `a* b a* b a*` (Any number of 'a's can surround the two mandatory 'b's)
 
@@ -319,6 +322,7 @@ This language is the union of two independent conditions. We construct the expre
 
 **iii) Write the Regular expression for the language $L = \{ab^n w \mid n \ge 3, w \in \{a, b\} ^+\}$**
 *(Note: Interpreting the typographical spacing "ab nw" as $ab^n w$ based on standard formal language notation).*
+
 - The string must start with `a`.
 - Followed by at least 3 `b`s: `bbb b*`
 - Followed by $w$, which is any non-empty string of 'a's and 'b's ($\{a, b\}^+$): `(a+b)(a+b)*`
@@ -373,6 +377,7 @@ This division guarantees three conditions:
 3. $|vxy| \le p$
 
 **How it works (The Parse Tree Implementation):**
+
 - **Sufficient Height:** If a string is sufficiently long (longer than $p$), its generated parse tree must be tall enough to branch extensively.
 - **Pigeonhole Principle on Variables:** Because any CFG only has a finite number of non-terminal variables, a sufficiently tall parse tree guarantees that at least one variable (let's call it $A$) must repeat on a single path from the root down to a leaf node.
 - **The Subtrees:** * The "upper" occurrence of variable $A$ derives the substring $vxy$.
@@ -393,6 +398,7 @@ Because these substitutions rely purely on the established production rules of t
 
 **Reasoning:**
 A problem is decidable if there exists a Turing Machine (an algorithm) that will always halt and correctly output "yes" or "no" for any given input. To determine if a number $m$ is prime, we can construct an algorithm that tests if $m$ is divisible by any integer from $2$ up to $\sqrt{m}$.
+
 - If a divisor is found, the machine halts and rejects (outputs "no").
 - If no divisor is found after checking all possibilities, the machine halts and accepts (outputs "yes").
 Because this process is guaranteed to terminate for any input $m$, the primality testing problem is completely decidable.
@@ -407,6 +413,7 @@ $E \rightarrow aA \mid e$
 
 **Step 1: Eliminate Non-Generating Symbols**
 A symbol is generating if it can derive a string of terminal symbols.
+
 - $A \rightarrow a$ (A is generating)
 - $C \rightarrow c$ (C is generating)
 - $E \rightarrow e$ (E is generating)
@@ -421,6 +428,7 @@ $E \rightarrow aA \mid e$
 
 **Step 2: Eliminate Unreachable Symbols**
 A symbol is reachable if it can be reached from the start state $S$.
+
 - From $S$, we can reach $A$ and $C$ (via $S \rightarrow AC$).
 - $E$ cannot be reached from $S$ or any symbol reachable from $S$. **$E$ is unreachable.**
 
@@ -515,6 +523,7 @@ B &\rightarrow b \mid \epsilon
 $$
 
 **Step 1: Eliminate $\epsilon$-productions**
+
 - **Nullable variables:** $B \rightarrow \epsilon$, which implies $A \rightarrow \epsilon$ is possible (since $A \rightarrow B$).
 - Replace instances of nullable variables $A$ and $B$ on the right-hand side with $\epsilon$ to create new rules:
     $S \rightarrow ASA \mid SA \mid AS \mid S \mid aB \mid a$
@@ -522,6 +531,7 @@ $$
     $B \rightarrow b$
 
 **Step 2: Eliminate Unit Productions**
+
 - **Current unit productions:** $S \rightarrow S$, $A \rightarrow B$, $A \rightarrow S$.
 - Remove $S \rightarrow S$ as it is redundant.
 - Replace $A \rightarrow B$ with the non-unit right-hand side of $B$: $A \rightarrow b$
@@ -533,6 +543,7 @@ $$
 
 **Step 3: Convert to Chomsky Normal Form (CNF)**
 CNF restricts rules to either $X \rightarrow YZ$ (two non-terminals) or $X \rightarrow x$ (one terminal).
+
 - Create a variable for the terminal 'a': Let $C_a \rightarrow a$
 - For the sequence $ASA$, create a new variable $D \rightarrow SA$. Then $ASA$ becomes $AD$.
 - **Final CNF Rules:**
@@ -678,17 +689,18 @@ The transition function $\delta$ is defined by three main rules:
 
 **1. Alphabet ($\Sigma$)**
 An alphabet is a finite, non-empty set of distinct symbols. These symbols are the building blocks used to form strings.
+
 * **Example:** The standard binary alphabet is **$\Sigma = \{0, 1\}$**. Another example is the lowercase English alphabet **$\Sigma = \{a, b, c, \dots, z\}$**.
 
 **2. String (or Word)**
 A string is a finite sequence of symbols chosen from a specific alphabet. The length of a string $w$, denoted as $|w|$, is the number of symbols it contains. The empty string, containing zero symbols, is denoted by $\epsilon$ (epsilon).
+
 * **Example:** Over the alphabet $\Sigma = \{0, 1\}$, a valid string could be **$w = 0110$** with a length of $|w| = 4$.
 
 **3. Language ($L$)**
 A language is a set of strings all of which are generated from a specific alphabet. A language can be finite or infinite. The set of all possible strings over an alphabet $\Sigma$ is denoted as $\Sigma^*$ (Kleene closure). Therefore, any language $L$ over $\Sigma$ is a subset of $\Sigma^*$ ($L \subseteq \Sigma^*$).
+
 * **Example:** Over $\Sigma = \{0, 1\}$, a language $L$ could be defined as the set of all strings starting with '1'. So, **$L = \{1, 10, 11, 100, 101, \dots\}$**.
-
-
 
 ### b) Determine the language for the following statements:
 
@@ -707,13 +719,12 @@ A string has '101' as a substring if it can be broken down into some prefix $x$,
 **$L_3 = \{w \in \{0, 1\}^* \mid w = x101y \text{ for some } x, y \in \{0, 1\}^*\}$**
 *(Equivalently, using regular expressions, this language is generated by $(0+1)^* 101 (0+1)^*$)*
 
-
-
 ### c) Construct a DFA over $\{a,b\}$ accepting $\{baa, ab, abb\}$
 
 Because this is a finite language, the Deterministic Finite Automaton (DFA) will act like a tree structure (a Trie) for the valid strings, with all invalid deviations leading to a single "trap" or "dead" state.
 
 **Logic & Path Mapping:**
+
 * Path for **baa**: $q_0 \xrightarrow{b} q_1 \xrightarrow{a} q_2 \xrightarrow{a} q_3$ (Accept)
 * Path for **ab**: $q_0 \xrightarrow{a} q_4 \xrightarrow{b} q_5$ (Accept)
 * Path for **abb**: extends from 'ab': $q_5 \xrightarrow{b} q_6$ (Accept)
@@ -726,6 +737,7 @@ M &= (Q, \Sigma, \delta, q_0, F)
 \end{aligned}
 $$
 Where:
+
 * $Q = \{q_0, q_1, q_2, q_3, q_4, q_5, q_6, q_{trap}\}$
 * $\Sigma = \{a, b\}$
 * $q_0$ is the start state.
@@ -744,14 +756,13 @@ Where:
 | $*q_6$ | $q_{trap}$ | $q_{trap}$ |
 | $q_{trap}$ | $q_{trap}$ | $q_{trap}$ |
 
-
-
 ### d) Design a NFA for the language over $\{0,1\}$ that have at least two consecutive 0's or 1's.
 
 "At least two consecutive 0's or 1's" means the string must contain either "00" or "11" as a substring. This is structurally identical to the logic applied in question 2(b).
 
 **Construction Logic:**
 The NFA will stay in the initial state $q_0$, non-deterministically guessing when the sequence "00" or "11" is about to start.
+
 * To detect "00", it branches to $q_1$ upon reading `0`, and then to an accept state $q_2$ upon reading another `0`.
 * To detect "11", it branches to $q_3$ upon reading `1`, and then to an accept state $q_4$ upon reading another `1`.
 * Once it reaches an accept state, it remains there for any further input.
@@ -787,6 +798,7 @@ B &\rightarrow bB \mid b
 $$
 
 *Explanation:* * The rule $S \rightarrow aS$ allows for the generation of $m$ number of 'a's.
+
 * Releasing $S$ to $B$ stops generating 'a's and switches to generating 'b's.
 * The rule $B \rightarrow bB \mid b$ ensures that at least one 'b' is generated ($n > 0$) before termination.
 
@@ -795,6 +807,7 @@ $$
 ### b) DFA Minimization using Equivalence Theorem
 
 First, we extract the initial state properties and transition table from the given state diagram:
+
 * **Start State:** $a$
 * **Final States ($F$):** $\{c, d, e\}$ (indicated by double circles)
 * **Non-Final States ($Q-F$):** $\{a, b, f\}$
@@ -824,16 +837,16 @@ $$
 Check if states within the same group transition to the same group under inputs **0** and **1**.
 
 * **For group $P_1 = \{a, b, f\}$:**
-    * $a \xrightarrow{0} b \in P_1$ and $a \xrightarrow{1} c \in P_2$
-    * $b \xrightarrow{0} a \in P_1$ and $b \xrightarrow{1} d \in P_2$
-    * $f \xrightarrow{0} f \in P_1$ and $f \xrightarrow{1} f \in P_1$
-    * *Result:* States $a$ and $b$ behave identically, but $f$ goes to a different group on input **1**. Therefore, $f$ must be split into its own partition.
+  * $a \xrightarrow{0} b \in P_1$ and $a \xrightarrow{1} c \in P_2$
+  * $b \xrightarrow{0} a \in P_1$ and $b \xrightarrow{1} d \in P_2$
+  * $f \xrightarrow{0} f \in P_1$ and $f \xrightarrow{1} f \in P_1$
+  * *Result:* States $a$ and $b$ behave identically, but $f$ goes to a different group on input **1**. Therefore, $f$ must be split into its own partition.
 
 * **For group $P_2 = \{c, d, e\}$:**
-    * $c \xrightarrow{0} e \in P_2$ and $c \xrightarrow{1} f \in P_1$
-    * $d \xrightarrow{0} e \in P_2$ and $d \xrightarrow{1} f \in P_1$
-    * $e \xrightarrow{0} e \in P_2$ and $e \xrightarrow{1} f \in P_1$
-    * *Result:* States $c, d, e$ behave identically, so they remain together.
+  * $c \xrightarrow{0} e \in P_2$ and $c \xrightarrow{1} f \in P_1$
+  * $d \xrightarrow{0} e \in P_2$ and $d \xrightarrow{1} f \in P_1$
+  * $e \xrightarrow{0} e \in P_2$ and $e \xrightarrow{1} f \in P_1$
+  * *Result:* States $c, d, e$ behave identically, so they remain together.
 
 $$
 \begin{aligned}
@@ -845,12 +858,12 @@ $$
 Re-test the groups against the newly refined blocks of $\Pi_1$.
 
 * **Check $\{a, b\}$:**
-    * $a \xrightarrow{0} b \in \{a,b\}$ and $a \xrightarrow{1} c \in \{c,d,e\}$
-    * $b \xrightarrow{0} a \in \{a,b\}$ and $b \xrightarrow{1} d \in \{c,d,e\}$
-    * *Result:* They remain equivalent.
+  * $a \xrightarrow{0} b \in \{a,b\}$ and $a \xrightarrow{1} c \in \{c,d,e\}$
+  * $b \xrightarrow{0} a \in \{a,b\}$ and $b \xrightarrow{1} d \in \{c,d,e\}$
+  * *Result:* They remain equivalent.
 * **Check $\{c, d, e\}$:**
-    * All three states transition to group $\{c,d,e\}$ on **0** and group $\{f\}$ on **1**.
-    * *Result:* They remain equivalent.
+  * All three states transition to group $\{c,d,e\}$ on **0** and group $\{f\}$ on **1**.
+  * *Result:* They remain equivalent.
 
 $$
 \begin{aligned}
@@ -880,6 +893,7 @@ Most institutional email addresses follow a structured format like `student.id@u
 
 Let's assume a standard alphabet $\Sigma = \{a, b, \dots, z, 0, 1, \dots, 9, @, .\}$.
 We define helper shorthands for readability:
+
 * $\text{letter} = (a + b + \dots + z)$
 * $\text{digit} = (0 + 1 + \dots + 9)$
 * $\text{character} = (\text{letter} + \text{digit})$
@@ -902,6 +916,7 @@ In standard computational regex notation (as used in programming models), it tra
 
 **i) $a(a|b)^*Block$**
 This language accepts any string that begins with the character **a**, followed by any combination of **a** and **b**.
+
 * **DFA Transition Table:**
 
 | State | Input **a** | Input **b** |
@@ -912,6 +927,7 @@ This language accepts any string that begins with the character **a**, followed 
 
 **ii) $(a|b)ab^*$**
 This language accepts strings that start with either **a** or **b**, followed strictly by an **a**, and ending with any number of **b**s.
+
 * **DFA Transition Table:**
 
 | State | Input **a** | Input **b** |
@@ -923,6 +939,7 @@ This language accepts strings that start with either **a** or **b**, followed st
 
 **iii) $1(0+1)^*0$**
 This language matches any binary string that begins with **1** and ends with **0**.
+
 * **DFA Transition Table:**
 
 | State | Input **0** | Input **1** |
@@ -934,6 +951,7 @@ This language matches any binary string that begins with **1** and ends with **0
 
 **iv) $0^*0(1|0)^*11$**
 This regular expression simplifies to $0^+(0|1)^*11$, meaning the string must start with at least one **0** and terminate with the sequence **11**.
+
 * **DFA Transition Table:**
 
 | State | Input **0** | Input **1** |
@@ -944,11 +962,11 @@ This regular expression simplifies to $0^+(0|1)^*11$, meaning the string must st
 | $*q_3$ | $q_1$ | $q_3$ |
 | $q_{trap}$ | $q_{trap}$ | $q_{trap}$ |
 
-
 ### (b) Convert the following RE into its equivalent DFA – $11(0+1)^*0$
 
 **Design Logic:**
 The language requires strings to start with exactly **11**, followed by any sequence of binary digits, and must explicitly end with a **0**.
+
 * $q_0$ is the start state.
 * $q_1$ is reached after reading the first **1**.
 * $q_2$ is reached after reading the prefix **11**.
@@ -964,7 +982,6 @@ The language requires strings to start with exactly **11**, followed by any sequ
 | $q_2$ | $q_3$ | $q_2$ |
 | $*q_3$ | $q_3$ | $q_2$ |
 | $q_{trap}$ | $q_{trap}$ | $q_{trap}$ |
-
 
 ### (c) Construct the left-most and right-most derivations and parse trees for the following grammar
 
@@ -1060,21 +1077,23 @@ This string can yield two entirely different parse trees because the grammar doe
 
 Because a single input string produces multiple distinct syntactic structural interpretations, this grammar is verified as **ambiguous**.
 
-
 ### b) Explain PUSH and POP operation in a Push Down Automata with example.
 
 A Pushdown Automaton (PDA) extends the capabilities of a Finite Automaton by incorporating an external memory structure called a **Stack**. The machine manipulates this stack using two primary memory operations based on Last-In, First-Out (LIFO) access:
 
 **1. PUSH Operation**
 The PUSH operation adds a new symbol onto the top of the stack. In formal transition notation, if the machine reads an input symbol $a$, encounters stack top $Z_0$, and replaces it with $X Z_0$, it has pushed symbol $X$ onto the stack.
+
 * **Formal notation:** $\delta(q, a, Z_0) = (p, XZ_0)$
 
 **2. POP Operation**
 The POP operation removes the top symbol from the stack. In formal transition notation, replacing the top stack symbol $Z_0$ with the empty string ($\epsilon$) means that symbol has been discarded, exposing the symbol right beneath it.
+
 * **Formal notation:** $\delta(q, a, Z_0) = (p, \epsilon)$
 
 **Example Application:**
 Consider a PDA designed to accept the language $L = \{a^n b^n \mid n \ge 1\}$.
+
 * **When reading $a$s:** The machine uses the **PUSH** operation to store every 'a' encountered onto the stack as a marker $X$.
     $$
     \delta(q_0, a, Z_0) = (q_0, XZ_0) \quad \text{and} \quad \delta(q_0, a, X) = (q_0, XX)
@@ -1083,12 +1102,13 @@ Consider a PDA designed to accept the language $L = \{a^n b^n \mid n \ge 1\}$.
     $$
     \delta(q_0, b, X) = (q_1, \epsilon) \quad \text{and} \quad \delta(q_1, b, X) = (q_1, \epsilon)
     $$
-If the input ends precisely when the initial stack marker $Z_0$ is exposed, the number of $a$s perfectly matches the number of $b$s.
 
+If the input ends precisely when the initial stack marker $Z_0$ is exposed, the number of $a$s perfectly matches the number of $b$s.
 
 ### c) Construct a PDA from the following CFG
 
 **Given Grammar Configuration:**
+
 * $G = (\{S, X\}, \{a, b\}, P, S)$ 
 * Productions ($P$):
     $$
@@ -1102,6 +1122,7 @@ If the input ends precisely when the initial stack marker $Z_0$ is exposed, the 
 
 **PDA Construction Rules:**
 We design a single-state PDA $M = (\{q\}, \Sigma, \Gamma, \delta, q, S, \emptyset)$ where:
+
 * $\Sigma = \{a, b\}$ (Input alphabet)
 * $\Gamma = \{S, X, A, a, b\}$ (Stack alphabet)
 
@@ -1123,24 +1144,23 @@ We design a single-state PDA $M = (\{q\}, \Sigma, \Gamma, \delta, q, S, \emptyse
     \end{aligned}
     $$
 
-
 ### d) Proof that, "The union of two regular set is also regular"
 
 **Proof using Regular Expressions:**
 
-1.  **Premise Definition:** Let $S_1$ and $S_2$ be two regular sets. By definition, every regular set corresponds directly to a regular expression. Let $R_1$ be the regular expression representing $S_1$ ($L(R_1) = S_1$), and let $R_2$ be the regular expression representing $S_2$ ($L(R_2) = S_2$).
-2.  **Definition of Operators:** According to the formal definition of regular expressions, if $R_1$ and $R_2$ are valid regular expressions, then their algebraic union, denoted as **$(R_1 + R_2)$** or **$(R_1 \cup R_2)$**, is inherently a valid regular expression.
-3.  **Language of the Union:** The language defined by this combined regular expression is:
+1. **Premise Definition:** Let $S_1$ and $S_2$ be two regular sets. By definition, every regular set corresponds directly to a regular expression. Let $R_1$ be the regular expression representing $S_1$ ($L(R_1) = S_1$), and let $R_2$ be the regular expression representing $S_2$ ($L(R_2) = S_2$).
+2. **Definition of Operators:** According to the formal definition of regular expressions, if $R_1$ and $R_2$ are valid regular expressions, then their algebraic union, denoted as **$(R_1 + R_2)$** or **$(R_1 \cup R_2)$**, is inherently a valid regular expression.
+3. **Language of the Union:** The language defined by this combined regular expression is:
     $$
     L(R_1 + R_2) = L(R_1) \cup L(R_2) = S_1 \cup S_2
     $$
-4.  **Conclusion:** Since the set $S_1 \cup S_2$ can be completely described by a valid regular expression $(R_1 + R_2)$, **the union of two regular sets is structurally guaranteed to be a regular set.**
+4. **Conclusion:** Since the set $S_1 \cup S_2$ can be completely described by a valid regular expression $(R_1 + R_2)$, **the union of two regular sets is structurally guaranteed to be a regular set.**
 
 **Alternative Structural Proof using Finite Automata:**
 
-1.  Let $M_1 = (Q_1, \Sigma, \delta_1, q_1, F_1)$ be a Finite Automaton that recognizes $S_1$.
-2.  Let $M_2 = (Q_2, \Sigma, \delta_2, q_2, F_2)$ be a Finite Automaton that recognizes $S_2$. Assume $Q_1 \cap Q_2 = \emptyset$.
-3.  We can construct a new Nondeterministic Finite Automaton $M_{\text{union}}$ to recognize $S_1 \cup S_2$ by creating a new absolute start state $q_0'$ and connecting it to the old start states via empty transitions ($\epsilon$-transitions):
+1. Let $M_1 = (Q_1, \Sigma, \delta_1, q_1, F_1)$ be a Finite Automaton that recognizes $S_1$.
+2. Let $M_2 = (Q_2, \Sigma, \delta_2, q_2, F_2)$ be a Finite Automaton that recognizes $S_2$. Assume $Q_1 \cap Q_2 = \emptyset$.
+3. We can construct a new Nondeterministic Finite Automaton $M_{\text{union}}$ to recognize $S_1 \cup S_2$ by creating a new absolute start state $q_0'$ and connecting it to the old start states via empty transitions ($\epsilon$-transitions):
     $$
     M_{\text{union}} = (Q_1 \cup Q_2 \cup \{q_0'\}, \Sigma, \delta_{\text{new}}, q_0', F_1 \cup F_2)
     $$
@@ -1148,7 +1168,7 @@ We design a single-state PDA $M = (\{q\}, \Sigma, \Gamma, \delta, q, S, \emptyse
     $$
     \delta_{\text{new}}(q_0', \epsilon) = \{q_1, q_2\}
     $$
-4.  Since $M_{\text{union}}$ is a valid finite automaton that accepts exactly $S_1 \cup S_2$, the union of two regular sets is proven closed and regular.
+4. Since $M_{\text{union}}$ is a valid finite automaton that accepts exactly $S_1 \cup S_2$, the union of two regular sets is proven closed and regular.
 
 ---
 
@@ -1165,6 +1185,7 @@ M = (Q, \Sigma, \Gamma, \delta, q_0, B, F)
 $$
 
 Where each component is defined as follows:
+
 * **$Q$**: A finite, non-empty set of states.
 * **$\Sigma$**: The input alphabet, a finite set of symbols allowed in the initial input string (does not contain the blank symbol $B$).
 * **$\Gamma$**: The tape alphabet, a finite set of symbols that can be written to the tape, where $\Sigma \subset \Gamma$ and $B \in \Gamma$.
@@ -1179,21 +1200,21 @@ Where each component is defined as follows:
 * **$B$**: The blank symbol ($B \in \Gamma$), which populates the unused infinite portions of the tape.
 * **$F$**: The set of final or accepting states ($F \subseteq Q$).
 
-
 ### b) Design a Turing Machine that accepts Even Palindromes over the alphabet $\Sigma=\{a,b\}$
 
 An even palindrome is a string that reads the same forward and backward and has an even length (e.g., $aa$, $bb$, $abba$, $baab$). 
 
 **Algorithm/Strategy:**
-1.  **Read the leftmost character** in state $q_0$. Mark it by replacing it with a blank ($B$). 
-2.  If it was an `a`, transition to state $q_a$ to search for its matching partner at the end. If it was a `b`, transition to state $q_b$.
-3.  **Scan right** over all intermediate `a`s and `b`s until hitting the trailing blank ($B$).
-4.  Step one position left to look at the last actual character of the string.
+
+1. **Read the leftmost character** in state $q_0$. Mark it by replacing it with a blank ($B$). 
+2. If it was an `a`, transition to state $q_a$ to search for its matching partner at the end. If it was a `b`, transition to state $q_b$.
+3. **Scan right** over all intermediate `a`s and `b`s until hitting the trailing blank ($B$).
+4. Step one position left to look at the last actual character of the string.
     * In state $q_{comp\_a}$, verify the character is an `a`. If true, clear it to $B$ and head back left (state $q_{rev}$).
     * In state $q_{comp\_b}$, verify the character is a `b`. If true, clear it to $B$ and head back left (state $q_{rev}$).
     * If a mismatch occurs, the machine halts and rejects.
-5.  **Scan left** (state $q_{rev}$) until reaching the leftmost blank ($B$), then step right and repeat the entire loop.
-6.  If state $q_0$ reads a blank ($B$) immediately at the start of a cycle, it means all characters have been successfully matched in pairs. The machine enters **$q_{accept}$**.
+5. **Scan left** (state $q_{rev}$) until reaching the leftmost blank ($B$), then step right and repeat the entire loop.
+6. If state $q_0$ reads a blank ($B$) immediately at the start of a cycle, it means all characters have been successfully matched in pairs. The machine enters **$q_{accept}$**.
 
 **Transition Table ($\delta$):**
 
@@ -1207,18 +1228,19 @@ An even palindrome is a string that reads the same forward and backward and has 
 | **$q_{rev}$** | $(q_{rev}, a, L)$ | $(q_{rev}, b, L)$ | $(q_0, B, R)$ |
 | **$q_{accept}$** | — | — | — |
 
-
 ### c) Convert the following CFG into CNF: $S \rightarrow ASA \mid aB, A \rightarrow B \mid S, B \rightarrow b \mid \epsilon$
 
 **Step 1: Eliminate $\epsilon$-productions**
 Identify the nullable variables. Since $B \rightarrow \epsilon$, $B$ is nullable. Because $A \rightarrow B$, $A$ is also nullable. $S$ is not nullable.
 Now, add versions of rules deleting these nullable variables:
+
 * $S \rightarrow ASA \mid SA \mid AS \mid S \mid aB \mid a$
 * $A \rightarrow B \mid S$
 * $B \rightarrow b$
 
 **Step 2: Eliminate Unit Productions**
 Identify the unit chains: $S \rightarrow S$, $A \rightarrow B$, and $A \rightarrow S$.
+
 * Remove the redundant self-loop $S \rightarrow S$.
 * Resolve $A \rightarrow B$: Replace it with the non-unit components of $B$, yielding $A \rightarrow b$.
 * Resolve $A \rightarrow S$: Replace it with the non-unit components of $S$.
@@ -1229,9 +1251,10 @@ The updated production set becomes:
 
 **Step 3: Restructure into Chomsky Normal Form (CNF)**
 CNF rules must strictly look like $X \rightarrow YZ$ or $X \rightarrow x$.
-1.  Introduce a terminal-mapping variable for $a$: **$C_a \rightarrow a$**.
-2.  Replace $aB$ with **$C_aB$**.
-3.  Break down any long 3-variable strings ($ASA$) by introducing a placeholder: **$D \rightarrow SA$**. Thus, $ASA$ simplifies to **$AD$**.
+
+1. Introduce a terminal-mapping variable for $a$: **$C_a \rightarrow a$**.
+2. Replace $aB$ with **$C_aB$**.
+3. Break down any long 3-variable strings ($ASA$) by introducing a placeholder: **$D \rightarrow SA$**. Thus, $ASA$ simplifies to **$AD$**.
 
 **Final CNF Production Rules:**
 $$
@@ -1243,7 +1266,6 @@ C_a &\rightarrow a \\
 D &\rightarrow SA
 \end{aligned}
 $$
-
 
 ---
 
@@ -1261,6 +1283,7 @@ B &\rightarrow b \mid \epsilon
 $$
 
 **Step 1: Eliminate $\epsilon$-productions**
+
 * Nullable variables are $B$ (since $B \rightarrow \epsilon$) and $A$ (since $A \rightarrow B \rightarrow \epsilon$).
 * Rewriting the rules to account for missing $A$ or $B$ symbols yields:
     $S \rightarrow ASA \mid SA \mid AS \mid S \mid aB \mid a$
@@ -1268,6 +1291,7 @@ $$
     $B \rightarrow b$
 
 **Step 2: Eliminate Unit Productions**
+
 * Remove the unit loop $S \rightarrow S$.
 * Resolve $A \rightarrow B$ by replacing it with the non-unit right-hand side of $B$: $A \rightarrow b$.
 * Resolve $A \rightarrow S$ by substituting it with all remaining non-unit right-hand side expressions of $S$.
@@ -1277,6 +1301,7 @@ $$
     $B \rightarrow b$
 
 **Step 3: Restructure into Chomsky Normal Form (CNF)**
+
 * Introduce a placeholder variable for the terminal: $C_a \rightarrow a$.
 * Break down the three-variable sequence $ASA$ by creating $D \rightarrow SA$, making it $AD$.
 * **Final CNF Production Rules:**
@@ -1285,7 +1310,6 @@ $$
     **$B \rightarrow b$**
     **$C_a \rightarrow a$**
     **$D \rightarrow SA$**
-
 
 ### (b) Consider the given grammar and Convert to Chomsky Normal Form
 
@@ -1299,6 +1323,7 @@ B &\rightarrow SbS \mid A \mid bb
 $$
 
 **Step 1: Eliminate $\epsilon$-productions**
+
 * $A$ is directly nullable ($A \rightarrow \epsilon$). This cascades to make $B$ nullable too because of the unit rule $B \rightarrow A$. $S$ is not nullable.
 * Re-evaluating paths without the nullable variables gives:
     $S \rightarrow ASB \mid SB \mid AS$ *(Note: removing both leaves $S \rightarrow S$, which is omitted)*
@@ -1306,17 +1331,19 @@ $$
     $B \rightarrow SbS \mid A \mid bb$
 
 **Step 2: Eliminate Unit Productions**
+
 * The remaining unit production is $B \rightarrow A$. We replace $A$ with all its current valid non-unit derivations:
     $S \rightarrow ASB \mid SB \mid AS$
     $A \rightarrow aAS \mid aS \mid a$
     $B \rightarrow SbS \mid bb \mid aAS \mid aS \mid a$
 
 **Step 3: Convert to Chomsky Normal Form (CNF)**
+
 * Introduce terminal variables: $C_a \rightarrow a$ and $C_b \rightarrow b$.
 * Substitute variables into the rules and split combinations longer than two non-terminals:
-    * For $S \rightarrow ASB$, create $D_1 \rightarrow SB \implies AD_1$
-    * For $A \rightarrow C_aAS$ and $B \rightarrow C_aAS$, create $D_2 \rightarrow AS \implies C_aD_2$
-    * For $B \rightarrow SC_bS$, create $D_3 \rightarrow C_bS \implies SD_3$
+  * For $S \rightarrow ASB$, create $D_1 \rightarrow SB \implies AD_1$
+  * For $A \rightarrow C_aAS$ and $B \rightarrow C_aAS$, create $D_2 \rightarrow AS \implies C_aD_2$
+  * For $B \rightarrow SC_bS$, create $D_3 \rightarrow C_bS \implies SD_3$
 
 * **Final CNF Production Rules:**
     **$S \rightarrow AD_1 \mid SB \mid AS$**
@@ -1327,7 +1354,6 @@ $$
     **$D_1 \rightarrow SB$**
     **$D_2 \rightarrow AS$**
     **$D_3 \rightarrow C_bS$**
-
 
 ### (c) Construct the CFG for having any number of b's over the set $\Sigma = \{b\}$
 
@@ -1346,6 +1372,7 @@ The equivalent Context-Free Grammar is defined as $G = (\{S\}, \{b\}, P, S)$ wit
 *Note: There is a typographical mismatch in the exam question where the production rules introduce a non-terminal variable $A$, but the formal variable set is defined only as $\{S, X\}$. To construct the Pushdown Automaton accurately based on the given rules, we apply the standard top-down parsing technique via the empty stack method.*
 
 We design a single-state PDA $M = (\{q\}, \Sigma, \Gamma, \delta, q, S, \emptyset)$ where:
+
 * $\Sigma = \{a, b\}$ (Input alphabet)
 * $\Gamma = \{S, X, A, a, b\}$ (Stack alphabet)
 * $S$ is the start stack symbol.
@@ -1381,17 +1408,17 @@ We design a single-state PDA $M = (\{q\}, \Sigma, \Gamma, \delta, q, S, \emptyse
 
 **Proof by Contradiction:**
 
-1.  **Assumption:** Assume the language $A$ is regular. Therefore, it must satisfy the Pumping Lemma for regular languages with a pumping length $p$.
-2.  **String Selection:** Choose a string $s = a^p b^p$. This string is explicitly a member of $A$ because the number of $a$s equals the number of $b$s, and its length is $|s| = 2p \ge p$.
-3.  **Decomposition:** According to the lemma, any such valid string $s$ can be split into three parts, $s = xyz$, subject to the following constraints:
+1. **Assumption:** Assume the language $A$ is regular. Therefore, it must satisfy the Pumping Lemma for regular languages with a pumping length $p$.
+2. **String Selection:** Choose a string $s = a^p b^p$. This string is explicitly a member of $A$ because the number of $a$s equals the number of $b$s, and its length is $|s| = 2p \ge p$.
+3. **Decomposition:** According to the lemma, any such valid string $s$ can be split into three parts, $s = xyz$, subject to the following constraints:
     * $|y| > 0$
     * $|xy| \le p$
     * $xy^i z \in A$ for all $i \ge 0$
-4.  **Characterizing $y$:** Because the string $s$ begins with $p$ copies of $a$, and the constraint dictates that the combined length of $x$ and $y$ cannot exceed $p$ ($|xy| \le p$), the substring $xy$ must be made up entirely of $a$s. Consequently, $y$ consists solely of $a$s. Let $y = a^k$ where $k \ge 1$.
-5.  **Pumping Violation:** Let's choose to pump up by setting $i = 2$. The resulting string is $xy^2z$.
+4. **Characterizing $y$:** Because the string $s$ begins with $p$ copies of $a$, and the constraint dictates that the combined length of $x$ and $y$ cannot exceed $p$ ($|xy| \le p$), the substring $xy$ must be made up entirely of $a$s. Consequently, $y$ consists solely of $a$s. Let $y = a^k$ where $k \ge 1$.
+5. **Pumping Violation:** Let's choose to pump up by setting $i = 2$. The resulting string is $xy^2z$.
     * By replicating $y$, we introduce $k$ additional $a$s to the front of the string.
     * The new string structural form becomes $a^{p+k} b^p$.
-6.  **Conclusion:** Because $k \ge 1$, the quantity of $a$s ($p+k$) is strictly greater than the quantity of $b$s ($p$). Therefore, $xy^2z \notin A$. This direct contradiction of the third lemma condition proves our initial assumption false. **The language $A = \{a^n b^n \mid n \ge 0\}$ is not regular.**
+6. **Conclusion:** Because $k \ge 1$, the quantity of $a$s ($p+k$) is strictly greater than the quantity of $b$s ($p$). Therefore, $xy^2z \notin A$. This direct contradiction of the third lemma condition proves our initial assumption false. **The language $A = \{a^n b^n \mid n \ge 0\}$ is not regular.**
 
 ### d) Describe about the Context Free Language Closure Properties.
 
@@ -1400,15 +1427,15 @@ Context-Free Languages (CFLs) possess distinct closure properties under standard
 **Operations under which CFLs are CLOSED:**
 
 * **Union:** If $L_1$ and $L_2$ are CFLs, then $L_1 \cup L_2$ is also a CFL. 
-    * *Proof Idea:* If $S_1$ and $S_2$ are the start symbols of the respective grammars, we can create a new start symbol $S_{\text{new}} \rightarrow S_1 \mid S_2$.
+  * *Proof Idea:* If $S_1$ and $S_2$ are the start symbols of the respective grammars, we can create a new start symbol $S_{\text{new}} \rightarrow S_1 \mid S_2$.
 * **Concatenation:** If $L_1$ and $L_2$ are CFLs, then $L_1 \cdot L_2$ is also a CFL.
-    * *Proof Idea:* A new start symbol rule can be written as $S_{\text{new}} \rightarrow S_1 S_2$.
+  * *Proof Idea:* A new start symbol rule can be written as $S_{\text{new}} \rightarrow S_1 S_2$.
 * **Kleene Closure (Star):** If $L$ is a CFL, then $L^*$ is also a CFL.
-    * *Proof Idea:* If $S$ is the original start symbol, the new grammar utilizes $S_{\text{new}} \rightarrow S S_{\text{new}} \mid \epsilon$.
+  * *Proof Idea:* If $S$ is the original start symbol, the new grammar utilizes $S_{\text{new}} \rightarrow S S_{\text{new}} \mid \epsilon$.
 
 **Operations under which CFLs are NOT CLOSED:**
 
 * **Intersection:** If $L_1$ and $L_2$ are CFLs, $L_1 \cap L_2$ is **not necessarily** a CFL.
-    * *Counterexample:* Consider $L_1 = \{a^n b^n c^m \mid n, m \ge 1\}$ and $L_2 = \{a^m b^n c^n \mid n, m \ge 1\}$, which are both valid CFLs. Their intersection yields $L_1 \cap L_2 = \{a^n b^n c^n \mid n \ge 1\}$, which is a well-known non-context-free language.
+  * *Counterexample:* Consider $L_1 = \{a^n b^n c^m \mid n, m \ge 1\}$ and $L_2 = \{a^m b^n c^n \mid n, m \ge 1\}$, which are both valid CFLs. Their intersection yields $L_1 \cap L_2 = \{a^n b^n c^n \mid n \ge 1\}$, which is a well-known non-context-free language.
 * **Complement:** If $L$ is a CFL, its complement $\Sigma^* - L$ is **not necessarily** a CFL.
-    * *Justification:* By De Morgan's Laws, $L_1 \cap L_2 = \overline{\overline{L_1} \cup \overline{L_2}}$. If complementation were closed, intersection would also be closed by extension, which it is not.
+  * *Justification:* By De Morgan's Laws, $L_1 \cap L_2 = \overline{\overline{L_1} \cup \overline{L_2}}$. If complementation were closed, intersection would also be closed by extension, which it is not.

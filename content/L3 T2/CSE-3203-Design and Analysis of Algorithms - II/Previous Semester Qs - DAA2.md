@@ -61,10 +61,12 @@ $$
 | **Implementation** | Simpler | More complex |
 
 **Pros of Quadratic Probing:**
+
 - Faster computation per probe (single hash function)
 - Simpler to implement
 
 **Cons of Quadratic Probing:**
+
 - Suffers from secondary clustering
 - May fail to find empty slot even if table is not full
 
@@ -130,7 +132,9 @@ $(1,2), (1,3), (1,4), (2,3), (2,5), (3,4), (3,5), (4,5)$
 ## 3 _____
 
 ### a. What is Euler's Totient function?
+
 #### (i) Find the value of $\Phi(35)$ with proper explanation.
+
 #### (ii) Find the value of $\Phi(7000)$.
 
 **Euler's Totient Function $\Phi(n)$:**
@@ -165,6 +169,7 @@ $$
 $$
 
 ### b. Define Relatively prime number. Solve the following equations using Chinese Remainder Theorem.
+
 $$
 \begin{aligned}
 X &\equiv 2 \pmod 3 \\
@@ -283,6 +288,7 @@ $$
 $$
 
 **Result:**
+
 - **$s = -1$**
 - **$t = 6$**
 
@@ -368,10 +374,12 @@ $$
 | A→D→C | 3+3=6 | 13 | Explore |
 
 **Path A→D→B (Cost=5):**
+
 - Remaining: C→A = 5
 - Total: 5 + 4 + 2 + 5 = **16**
 
 **Path A→D→C (Cost=6):**
+
 - Remaining: B→A = 2
 - Total: 6 + 2 + 2 + 2 = **12**
 
@@ -419,6 +427,7 @@ Place N queens on an $N \times N$ chessboard such that no two queens attack each
 | **5. Solution Found** | When all N queens are placed successfully |
 
 **Safety Check Conditions:**
+
 - No other queen in same column
 - No other queen on same diagonal ($|row_1 - row_2| = |col_1 - col_2|$)
 
@@ -460,11 +469,13 @@ Place N queens on an $N \times N$ chessboard such that no two queens attack each
 Compares pattern $P$ of length $m$ with every substring of text $T$ of length $n$.
 
 **Time Complexity:**
+
 - **Best Case:** $O(n)$ (Pattern found at start or mismatch at first character)
 - **Worst Case:** $O(n \cdot m)$ (Pattern matches all but last character at each position)
 - **Average Case:** $O(n)$ (Assuming random text)
 
 **Example Worst Case:**
+
 - Text: `AAAA...B`
 - Pattern: `AAAB`
 
@@ -474,6 +485,7 @@ Compares pattern $P$ of length $m$ with every substring of text $T$ of length $n
 A spurious hit occurs when the hash value of a substring matches the hash value of the pattern, but the substring itself is not equal to the pattern. It requires a character-by-character comparison to verify.
 
 **Assumption:** Pattern $P = 26$ (Standard example for this text).
+
 - $m = 2$ (Pattern length)
 - $q = 11$
 - $d = 10$ (Radix)
@@ -597,6 +609,7 @@ Matches found at indices **6** and **14**.
 | **$\pi[i]$** | 0 | 0 | 0 | 0 | 1 | 2 | 3 | 1 |
 
 **Explanation:**
+
 - $\pi[1]=0$ (No proper prefix)
 - $\pi[2]=0$ (`ab` has no common prefix/suffix)
 - $\pi[3]=0$ (`abc` has no common prefix/suffix)
@@ -625,16 +638,19 @@ Matches found at indices **6** and **14**.
 | **Parallelism** | Ratio $T_1 / T_\infty$ (maximum speedup possible) |
 
 **Greedy Scheduler:**
+
 - Assigns available tasks to idle processors greedily
 - Achieves near-optimal performance: $T_P \leq \frac{T_1}{P} + T_\infty$
 
 **Example:**
+
 ```
 x = spawn Fib(n-1)
 y = Fib(n-2)
 sync
 return x + y
 ```
+
 - `spawn` starts parallel computation
 - `sync` ensures both results are ready before return
 
@@ -647,6 +663,7 @@ return x + y
 **Hashing** is a technique that uses a hash function to map keys to specific indices in a hash table, enabling efficient data storage and retrieval.
 
 **Advantages of Hash Table:**
+
 - **Fast Access:** Average time complexity of $O(1)$ for search, insert, and delete operations.
 - **Efficient Memory Usage:** Stores only necessary data without overhead of tree structures.
 - **Direct Addressing:** Eliminates need for sequential searching.
@@ -694,6 +711,7 @@ Probe sequence: $(H(k) + i^2) \bmod 10$
 ### c. Traverse Sieve of Eratosthenes algorithm for the given list 2,3,4,5,6,7,8,9,10,11,12,13,14,15
 
 **Algorithm Trace:**
+
 - **Initial List:** $[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]$
 - **p = 2:** Mark multiples of 2 ($4, 6, 8, 10, 12, 14$)
   - Remaining: $[2, 3, 5, 7, 9, 11, 13, 15]$
@@ -720,6 +738,7 @@ $$
 $$
 
 **Sieve of Eratosthenes Algorithm:**
+
 1. Create a list of integers from $2$ to $n$.
 2. Let $p = 2$ (the first prime).
 3. Mark all multiples of $p$ starting from $p^2$ up to $n$.
@@ -741,6 +760,7 @@ $$
 $$
 
 ### c. Define Relatively prime number. Solve the following equations using Chinese Remainder Theorem.
+
 $$
 \begin{aligned}
 X &\equiv 1 \pmod 4 \\
@@ -752,6 +772,7 @@ $$
 **Relatively Prime:** Two integers are relatively prime if their greatest common divisor is 1.
 
 **CRT Solution:**
+
 - $M = 4 \times 5 \times 7 = 140$
 - $M_1 = 35, M_2 = 28, M_3 = 20$
 - Inverses: $y_1 = 3, y_2 = 2, y_3 = 6$
@@ -768,6 +789,7 @@ $$
 ## 3 _____
 
 ### a. Are the following equations valid for CRT? If so, why? Calculate the value of X.
+
 $$
 \begin{aligned}
 X &\equiv 2 \pmod 3 \\
@@ -779,6 +801,7 @@ $$
 **Validity:** Yes, valid because moduli $3, 4, 5$ are pairwise coprime ($\gcd(3,4)=1, \gcd(3,5)=1, \gcd(4,5)=1$).
 
 **Solution:**
+
 - $M = 60$
 - $M_1 = 20, M_2 = 15, M_3 = 12$
 - Inverses: $y_1 = 2, y_2 = 3, y_3 = 3$
@@ -793,8 +816,11 @@ X &= (2 \cdot 20 \cdot 2 + 3 \cdot 15 \cdot 3 + 4 \cdot 12 \cdot 3) \bmod 60 \\
 $$
 
 ### b. What is Relatively co prime?
+
 #### (i) Find the value of $\Phi(35)$ with proper explanation.
+
 #### (ii) Find the value of $\Phi(1000)$.
+
 #### (iii) Solve the modular exponentiation $23^{16} \bmod 30$.
 
 **Relatively Co-prime:** Two numbers sharing no common factors other than 1.
@@ -818,6 +844,7 @@ $$
 ### c. What are the applications of prime factorization?
 
 **Applications:**
+
 - **Cryptography:** Foundation of RSA encryption (security relies on difficulty of factoring large numbers).
 - **Number Theory:** Calculating GCD, LCM, and Euler's totient function.
 - **Simplification:** Reducing fractions to lowest terms.
@@ -831,6 +858,7 @@ $$
 $(1,2), (1,3), (1,4), (1,8), (2,3), (2,4), (2,8), (3,4), (4,5), (5,6), (5,8), (6,7), (7,8)$
 
 **Backtracking Trace:**
+
 - Start at Vertex 1.
 - Path: $[1]$
 - Try 2: $[1, 2]$
@@ -848,11 +876,13 @@ $(1,2), (1,3), (1,4), (1,8), (2,3), (2,4), (2,8), (3,4), (4,5), (5,6), (5,8), (6
 
 **Graph Analysis:**
 The graph is a complete bipartite graph $K_{3,3}$.
+
 - **Set 1:** $\{a, c, e\}$
 - **Set 2:** $\{b, d, f\}$
 Every vertex in Set 1 is connected to every vertex in Set 2, and there are no edges within sets.
 
 **Coloring:**
+
 - **Color 1:** Assign to $\{a, c, e\}$
 - **Color 2:** Assign to $\{b, d, f\}$
 
@@ -918,6 +948,7 @@ $$
 | **$\pi[i]$** | 0 | 0 | 0 | 1 | 2 | 0 |
 
 **Matching Trace:**
+
 - **Shift 0:** `abx...` vs `abc...` (Mismatch at index 3, $x \neq c$). $\pi[2]=0$, shift by $3-0=3$.
 - **Shift 3:** `abcabc...` vs `abcaby` (Mismatch at index 6, $c \neq y$). $\pi[5]=2$, shift by $6-2=4$.
 - **Shift 7:** `abcaby` vs `abcaby` (Match!).
@@ -962,6 +993,7 @@ Compute the cross product of vectors $\vec{P_0P_1}$ and $\vec{P_0P_2}$:
 $$
 CP = (x_1 - x_0)(y_2 - y_0) - (x_2 - x_0)(y_1 - y_0)
 $$
+
 - If $CP > 0$: $P_0P_1$ is **clockwise** from $P_0P_2$ (assuming standard Cartesian coordinates where $y$ increases upwards).
 - If $CP < 0$: $P_0P_1$ is **counter-clockwise** from $P_0P_2$.
 - If $CP = 0$: Points are **collinear**.
@@ -979,6 +1011,7 @@ $$
 
 **Convex Hull:** The smallest convex polygon that contains all points in a given set.
 **Importance:**
+
 - **Collision Detection:** Simplifies complex shapes to convex boundaries.
 - **Pattern Recognition:** Shape analysis and feature extraction.
 - **Geographic Information Systems (GIS):** Determining boundaries and coverage areas.
@@ -986,10 +1019,12 @@ $$
 ### d. What are the common algorithms used to determine if a point lies inside a polygon? Explain one of them briefly.
 
 **Common Algorithms:**
+
 1. **Ray Casting (Crossing Number)**
 2. **Winding Number**
 
 **Ray Casting Algorithm:**
+
 - Draw a horizontal ray from the query point to infinity (usually rightwards).
 - Count the number of times the ray intersects the polygon edges.
 - **Odd Count:** Point is **inside**.
@@ -1001,12 +1036,14 @@ $$
 ### a. Write down the name of four polynomial and exponential time taking algorithm. Which one is faster? Explain.
 
 **Polynomial Time Algorithms:**
+
 1. **Merge Sort:** $O(n \log n)$
 2. **Dijkstra's Algorithm:** $O(V^2)$
 3. **Matrix Multiplication:** $O(n^3)$
 4. **Kruskal's Algorithm:** $O(E \log V)$
 
 **Exponential Time Algorithms:**
+
 1. **Traveling Salesman (Brute Force):** $O(n!)$
 2. **Subset Sum Problem:** $O(2^n)$
 3. **N-Queens Problem:** $O(n!)$
@@ -1014,16 +1051,19 @@ $$
 
 **Comparison:**
 **Polynomial time algorithms are faster.**
+
 - **Reason:** Polynomial functions grow much slower than exponential functions as input size $n$ increases. For large $n$, exponential algorithms become computationally infeasible, while polynomial algorithms remain tractable.
 
 ### b. How to determine a problem in NP Complete? What are the necessities of NP Completeness in algorithm analysis?
 
 **Determining NP-Completeness:**
 A problem is NP-Complete if:
+
 1. **In NP:** A solution can be verified in polynomial time.
 2. **NP-Hard:** Every problem in NP can be reduced to it in polynomial time (usually shown by reducing a known NP-Complete problem to it).
 
 **Necessities in Algorithm Analysis:**
+
 - **Hardness Classification:** Identifies problems unlikely to have efficient polynomial-time solutions.
 - **Research Direction:** If $P \neq NP$, efforts should focus on approximation or heuristics rather than exact polynomial algorithms.
 - **Reduction Tool:** Solving one NP-Complete problem efficiently would solve all NP problems.
@@ -1038,6 +1078,7 @@ A problem is NP-Complete if:
 | **$\pi[i]$** | 0 | 0 | 0 | 1 | 2 | 0 | 0 | 0 | 1 | 2 | 3 | 4 |
 
 **Explanation:**
+
 - $\pi[1..3] = 0$ (No proper prefix/suffix match)
 - $\pi[4] = 1$ (`a` matches `a`)
 - $\pi[5] = 2$ (`ab` matches `ab`)

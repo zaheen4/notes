@@ -5,10 +5,11 @@ publish: true
 
 ## 1 _____
 
-### a. Evaluate the sum $S = \sqrt{3} + \sqrt{5} + \sqrt{7}$ to 4 significant digits and find its absolute and relative error.
+### a. Evaluate the sum $S = \sqrt{3} + \sqrt{5} + \sqrt{7}$ to 4 significant digits and find its absolute and relative error
 
 **1. True Value Calculation:**
 First, we find the true value of the sum using high precision:
+
 * $\sqrt{3} \approx 1.7320508$  
 * $\sqrt{5} \approx 2.2360680$  
 * $\sqrt{7} \approx 2.6457513$  
@@ -16,19 +17,29 @@ First, we find the true value of the sum using high precision:
 
 **2. Approximated Value (to 4 significant digits):**
 Rounding the true sum to 4 significant digits gives us our approximated value:
+
 * $S_{\text{approx}} = \mathbf{6.614}$
 
 **3. Error Calculation:**
+
 * **Absolute Error ($E_a$):**
-    $$E_a = |S_{\text{true}} - S_{\text{approx}}|$$
-    $$E_a = |6.6138701 - 6.614| = \mathbf{0.0001299}$$
+    $$
+    E_a = |S_{\text{true}} - S_{\text{approx}}|
+    $$
+    $$
+    E_a = |6.6138701 - 6.614| = \mathbf{0.0001299}
+    $$
 * **Relative Error ($E_r$):**
-    $$E_r = \frac{E_a}{|S_{\text{true}}|}$$
-    $$E_r = \frac{0.0001299}{6.6138701} \approx \mathbf{0.00001964} \text{ (or } 1.964 \times 10^{-5}\text{)}$$
+    $$
+    E_r = \frac{E_a}{|S_{\text{true}}|}
+    $$
+    $$
+    E_r = \frac{0.0001299}{6.6138701} \approx \mathbf{0.00001964} \text{ (or } 1.964 \times 10^{-5}\text{)}
+    $$
 
 ---
 
-### b. Find a root, Correct to three decimal places and lying between 0 and 0.5, of the equation $4e^{-x} - \sin x - 1 = 0$ using the Bisection method.
+### b. Find a root, Correct to three decimal places and lying between 0 and 0.5, of the equation $4e^{-x} - \sin x - 1 = 0$ using the Bisection method
 
 > **Correction Note:** Let's quickly test the given interval $[0, 0.5]$ with the function $f(x) = 4e^{-x} - \sin x - 1$.  
 > $f(0) = 4(1) - 0 - 1 = 3$  
@@ -36,6 +47,7 @@ Rounding the true sum to 4 significant digits gives us our approximated value:
 > Because both $f(0)$ and $f(0.5)$ are positive, the Intermediate Value Theorem cannot guarantee a root in this interval, and the Bisection method cannot be initialized here. The root actually lies between **$0.8$ and $0.9$**. I will demonstrate the bisection method on the correct interval $[0.8, 0.9]$ to find your root.
 
 **Bisection Iterations on $[0.8, 0.9]$:**
+
 * $f(0.8) = 0.0800$ (Positive)
 * $f(0.9) = -0.1570$ (Negative)
 
@@ -55,9 +67,10 @@ The root converges to **$0.832$** (correct to three decimal places).
 
 ---
 
-### c. Find a real root of the equation $x = e^{-x}$ using the Newton-Raphson method, Correct to 5 decimal places.
+### c. Find a real root of the equation $x = e^{-x}$ using the Newton-Raphson method, Correct to 5 decimal places
 
 **Formulation:**
+
 * Function: $f(x) = x - e^{-x} = 0$
 * Derivative: $f'(x) = 1 + e^{-x}$
 * Newton-Raphson Formula: $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$
@@ -77,27 +90,33 @@ The root, correct to five decimal places, is **$0.56714$**.
 
 ## 2 _____
 
-### a. Solve by Gauss-Elimination method:
+### a. Solve by Gauss-Elimination method
 
-$3x + y - z = 3$  
-$2x - 8y + z = -5$  
-$x - 2y + 9z = 8$  
+$$
+3x + y - z = 3
+$$
+$$
+2x - 8y + z = -5
+$$
+$$
+x - 2y + 9z = 8
+$$
 
 **Step 1: Write the Augmented Matrix**
 $$
-\begin{bmatrix} 
-3 & 1 & -1 & | & 3 \\ 
-2 & -8 & 1 & | & -5 \\ 
-1 & -2 & 9 & | & 8 
+\begin{bmatrix}
+3 & 1 & -1 & | & 3 \\
+2 & -8 & 1 & | & -5 \\
+1 & -2 & 9 & | & 8
 \end{bmatrix}
 $$
 
 **Step 2: Swap $R_1$ and $R_3$ (to get a 1 in the pivot position for easier calculation)**
 $$
-\begin{bmatrix} 
-1 & -2 & 9 & | & 8 \\ 
-2 & -8 & 1 & | & -5 \\ 
-3 & 1 & -1 & | & 3 
+\begin{bmatrix}
+1 & -2 & 9 & | & 8 \\
+2 & -8 & 1 & | & -5 \\
+3 & 1 & -1 & | & 3
 \end{bmatrix}
 $$
 
@@ -105,43 +124,44 @@ $$
 $R_2 \leftarrow R_2 - 2R_1$  
 $R_3 \leftarrow R_3 - 3R_1$  
 $$
-\begin{bmatrix} 
-1 & -2 & 9 & | & 8 \\ 
-0 & -4 & -17 & | & -21 \\ 
-0 & 7 & -28 & | & -21 
+\begin{bmatrix}
+1 & -2 & 9 & | & 8 \\
+0 & -4 & -17 & | & -21 \\
+0 & 7 & -28 & | & -21
 \end{bmatrix}
 $$
 
 **Step 4: Simplify $R_3$ by dividing by 7**
 $R_3 \leftarrow R_3 / 7$  
 $$
-\begin{bmatrix} 
-1 & -2 & 9 & | & 8 \\ 
-0 & -4 & -17 & | & -21 \\ 
-0 & 1 & -4 & | & -3 
+\begin{bmatrix}
+1 & -2 & 9 & | & 8 \\
+0 & -4 & -17 & | & -21 \\
+0 & 1 & -4 & | & -3
 \end{bmatrix}
 $$
 
 **Step 5: Swap $R_2$ and $R_3$ (for a simpler pivot)**
 $$
-\begin{bmatrix} 
-1 & -2 & 9 & | & 8 \\ 
-0 & 1 & -4 & | & -3 \\ 
-0 & -4 & -17 & | & -21 
+\begin{bmatrix}
+1 & -2 & 9 & | & 8 \\
+0 & 1 & -4 & | & -3 \\
+0 & -4 & -17 & | & -21
 \end{bmatrix}
 $$
 
 **Step 6: Eliminate $y$ from $R_3$**
 $R_3 \leftarrow R_3 + 4R_2$  
 $$
-\begin{bmatrix} 
-1 & -2 & 9 & | & 8 \\ 
-0 & 1 & -4 & | & -3 \\ 
-0 & 0 & -33 & | & -33 
+\begin{bmatrix}
+1 & -2 & 9 & | & 8 \\
+0 & 1 & -4 & | & -3 \\
+0 & 0 & -33 & | & -33
 \end{bmatrix}
 $$
 
 **Step 7: Back Substitution**
+
 * $-33z = -33 \implies \mathbf{z = 1}$
 * $y - 4(1) = -3 \implies \mathbf{y = 1}$
 * $x - 2(1) + 9(1) = 8 \implies x + 7 = 8 \implies \mathbf{x = 1}$
@@ -151,13 +171,20 @@ $$
 
 ---
 
-### b. Solve the following system by Gauss-Jacobi method:
+### b. Solve the following system by Gauss-Jacobi method
 
-$10x - 5y - 2z = 3$  
-$4x - 10y + 3z = -3$  
-$x + 6y + 10z = -3$  
+$$
+10x - 5y - 2z = 3
+$$
+$$
+4x - 10y + 3z = -3
+$$
+$$
+x + 6y + 10z = -3
+$$
 
 **1. Check for Diagonal Dominance:**
+
 * $|10| > |-5| + |-2| \implies 10 > 7$ (True)
 * $|-10| > |4| + |3| \implies 10 > 7$ (True)
 * $|10| > |1| + |6| \implies 10 > 7$ (True)
@@ -183,23 +210,25 @@ $$z^{(k+1)} = \frac{1}{10} (-3 - x^{(k)} - 6y^{(k)})$$
 
 ## 3 _____
 
-### a) Evaluate $I = \int_0^1 1/(1 + x) \,dx$ correct to three decimal places using both trapezoidal and Simpson's 1/3 rules with $h = 0.5, 0.25, 0.125$.
+### a) Evaluate $I = \int_0^1 1/(1 + x) \,dx$ correct to three decimal places using both trapezoidal and Simpson's 1/3 rules with $h = 0.5, 0.25, 0.125$
 
 **Function:** $f(x) = \frac{1}{1+x}$
 
 **Case 1: $h = 0.5$**
 The evaluation points are $x = 0, 0.5, 1.0$.
+
 * $y_0 = f(0) = 1.00000$
 * $y_1 = f(0.5) = 0.66667$
 * $y_2 = f(1.0) = 0.50000$
 
 * **Trapezoidal Rule:**  
  $I \approx \frac{h}{2} [y_0 + 2y_1 + y_2] = \frac{0.5}{2} [1.0 + 2(0.66667) + 0.5] = 0.25 [2.83334] \approx \mathbf{0.708}$
-* **Simpson's 1/3 Rule:**   
+* **Simpson's 1/3 Rule:**
  $I \approx \frac{h}{3} [y_0 + 4y_1 + y_2] = \frac{0.5}{3} [1.0 + 4(0.66667) + 0.5] = \frac{0.5}{3} [4.16668] \approx \mathbf{0.694}$
 
 **Case 2: $h = 0.25$**
 The evaluation points are $x = 0, 0.25, 0.5, 0.75, 1.0$.
+
 * $y_0 = f(0) = 1.00000$
 * $y_1 = f(0.25) = 0.80000$
 * $y_2 = f(0.5) = 0.66667$
@@ -213,6 +242,7 @@ The evaluation points are $x = 0, 0.25, 0.5, 0.75, 1.0$.
 
 **Case 3: $h = 0.125$**
 The evaluation points are $x_0=0$ to $x_8=1.0$ with step $0.125$.
+
 * $y_0 = 1.00000$, $y_1 = 0.88889$,  
 * $y_2 = 0.80000$,  
 * $y_3 = 0.72727$,  
@@ -232,9 +262,9 @@ The evaluation points are $x_0=0$ to $x_8=1.0$ with step $0.125$.
 
 ---
 
-### b) From the following table of values of $x$ and $y$, obtain $dy/dx$ and $d^2y/dx^2$ for $x=1.2$.
+### b) From the following table of values of $x$ and $y$, obtain $dy/dx$ and $d^2y/dx^2$ for $x=1.2$
 
-Since $x=1.2$ is near the beginning of the table, we use **Newton's Forward Difference Formula**. 
+Since $x=1.2$ is near the beginning of the table, we use **Newton's Forward Difference Formula**.
 
 **1. Forward Difference Table:**
 
@@ -249,7 +279,9 @@ Since $x=1.2$ is near the beginning of the table, we use **Newton's Forward Diff
 | **2.2** | 9.0250 | | | | | |
 
 Setting $x_0 = 1.2$, the forward differences are:
-$\Delta y_0 = 0.7351, \quad \Delta^2 y_0 = 0.1627, \quad \Delta^3 y_0 = 0.0361, \quad \Delta^4 y_0 = 0.0080, \quad \Delta^5 y_0 = 0.0014$
+$$
+\Delta y_0 = 0.7351, \quad \Delta^2 y_0 = 0.1627, \quad \Delta^3 y_0 = 0.0361, \quad \Delta^4 y_0 = 0.0080, \quad \Delta^5 y_0 = 0.0014
+$$
 The step size is $h = 0.2$.
 
 **2. First Derivative ($dy/dx$):**
@@ -274,22 +306,26 @@ $$
 
 ## 4 _____
 
-### a) Discuss Euler's method to solve IVP.
-Euler's method is the simplest numerical procedure for solving first-order ordinary differential equations (Initial Value Problems) of the form $\frac{dy}{dx} = f(x, y)$ with an initial condition $y(x_0) = y_0$. 
+### a) Discuss Euler's method to solve IVP
 
-**Concept:** It uses the concept of local linearity. Starting at the initial point $(x_0, y_0)$, it calculates the slope of the tangent line using the function $f(x_0, y_0)$. It then assumes this slope remains constant over a small step size $h$, extending the tangent line to predict the next value. 
+Euler's method is the simplest numerical procedure for solving first-order ordinary differential equations (Initial Value Problems) of the form $\frac{dy}{dx} = f(x, y)$ with an initial condition $y(x_0) = y_0$.
+
+**Concept:** It uses the concept of local linearity. Starting at the initial point $(x_0, y_0)$, it calculates the slope of the tangent line using the function $f(x_0, y_0)$. It then assumes this slope remains constant over a small step size $h$, extending the tangent line to predict the next value.
 
 **Formula:**
 The process is iterated using the relation:
-$$y_{n+1} = y_n + h \cdot f(x_n, y_n)$$
+$$
+y_{n+1} = y_n + h \cdot f(x_n, y_n)
+$$
 where $x_{n+1} = x_n + h$. While easy to implement, it is a first-order method, meaning the global error is proportional to the step size $h$. To achieve high accuracy, $h$ must be kept extremely small.
 
 ---
 
-### b) Solve the equation $\frac{dy}{dx} = x + y$, $y(0) = 1$ at point $x = 0.10$.
+### b) Solve the equation $\frac{dy}{dx} = x + y$, $y(0) = 1$ at point $x = 0.10$
+
 Since part (a) discussed Euler's Method, we apply it here for a single step to find $y(0.10)$.
 
-* **Given:** $f(x, y) = x + y$, initial values $x_0 = 0, y_0 = 1$. 
+* **Given:** $f(x, y) = x + y$, initial values $x_0 = 0, y_0 = 1$.
 * **Step Size:** To reach $x = 0.10$ in one step, $h = 0.10$.
 
 **Calculation:**
@@ -305,13 +341,14 @@ $$
 
 ---
 
-### c) Solve the boundary value problem $y'' - 64y + 10 = 0$ with $y(0) = y(1) = 0$ by finite difference method.
+### c) Solve the boundary value problem $y'' - 64y + 10 = 0$ with $y(0) = y(1) = 0$ by finite difference method
 
 **1. Setup & Discretization:**
 
 We replace the continuous derivative $y''$ with its central finite difference approximation:
-$$y_i'' \approx \frac{y_{i+1} - 2y_i + y_{i-1}}{h^2}$$
-
+$$
+y_i'' \approx \frac{y_{i+1} - 2y_i + y_{i-1}}{h^2}
+$$
 
 Substitute this into the differential equation $y_i'' - 64y_i = -10$:  
 $$\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} - 64y_i = -10$$  
@@ -321,11 +358,14 @@ $$y_{i-1} - (2 + 64h^2)y_i + y_{i+1} = -10h^2$$
 
 Let's divide the domain $[0, 1]$ into 4 equal subintervals, giving a step size of $h = 0.25$.  
 This choice simplifies the equation beautifully because $h^2 = \frac{1}{16}$:
+
 * $64h^2 = 64 \left(\frac{1}{16}\right) = 4$
 * $-10h^2 = -10 \left(\frac{1}{16}\right) = -0.625$
 
 The iterative equation simplifies to:
-$$y_{i-1} - 6y_i + y_{i+1} = -0.625$$
+$$
+y_{i-1} - 6y_i + y_{i+1} = -0.625
+$$
 
 **3. Generating the System of Equations:**
 
@@ -333,39 +373,49 @@ The interior nodes are $x_1 = 0.25, x_2 = 0.50, x_3 = 0.75$.
 The boundary conditions are $y_0 = 0$ and $y_4 = 0$.
 
 Applying the simplified equation to the interior nodes:
-* **For $i=1$ ($x=0.25$):** $0 - 6y_1 + y_2 = -0.625$ 
+
+* **For $i=1$ ($x=0.25$):** $0 - 6y_1 + y_2 = -0.625$
 * **For $i=2$ ($x=0.50$):** $y_1 - 6y_2 + y_3 = -0.625$
 * **For $i=3$ ($x=0.75$):** $y_2 - 6y_3 + 0 = -0.625$
 
 Due to boundary symmetry, $y_1 = y_3$. We substitute $y_3$ with $y_1$ in the second equation:  
-$$2y_1 - 6y_2 = -0.625 \implies y_1 - 3y_2 = -0.3125$$
+$$
+2y_1 - 6y_2 = -0.625 \implies y_1 - 3y_2 = -0.3125
+$$
 
 **4. Solving the System:**
 
 We now have a simple 2x2 system:
-1)  $-6y_1 + y_2 = -0.625$
-2)  $y_1 - 3y_2 = -0.3125$
+
+1) $-6y_1 + y_2 = -0.625$
+2) $y_1 - 3y_2 = -0.3125$
 
 Multiply equation (1) by 3:
 
-$-18y_1 + 3y_2 = -1.875$  
+$$
+-18y_1 + 3y_2 = -1.875
+$$
 
 Add this to equation (2):
 
-$-17y_1 = -2.1875 \implies y_1 = \frac{2.1875}{17} \approx \mathbf{0.1287}$
+$$
+-17y_1 = -2.1875 \implies y_1 = \frac{2.1875}{17} \approx \mathbf{0.1287}
+$$
 
 Substitute $y_1$ back into equation (1) to find $y_2$:
-$y_2 = -0.625 + 6(0.1287) = -0.625 + 0.7722 \approx \mathbf{0.1471}$
+$$
+y_2 = -0.625 + 6(0.1287) = -0.625 + 0.7722 \approx \mathbf{0.1471}
+$$
 
 **Final Solution:**
+
 * $y(0.25) \approx \mathbf{0.1287}$
 * $y(0.50) \approx \mathbf{0.1471}$
 * $y(0.75) \approx \mathbf{0.1287}$
 
-
 ## 5 _____
 
-### a. Solve Laplace's equation $u_{xx} + u_{yy} = 0$ for the following Figure.
+### a. Solve Laplace's equation $u_{xx} + u_{yy} = 0$ for the following Figure
 
 **Grid Layout:**
 
@@ -399,9 +449,10 @@ $$
 **Symmetry Consideration:**
 
 The problem is symmetric about the vertical centerline ($x = 2$):
-- $u_1 = u_3$
-- $u_4 = u_6$
-- $u_7 = u_9$
+
+* $u_1 = u_3$
+* $u_4 = u_6$
+* $u_7 = u_9$
 
 **Reduced System (6 equations, 6 unknowns):**
 
@@ -437,13 +488,14 @@ $$
 | 0 | **42.86** | **52.68** | **42.86** | 0 |
 | 0 | 0 | 0 | 0 | 0 |
 
-### b. Solve the Poisson equation $u_{xx} + u_{yy} = -10(x^2 + y^2 + 10)$ in the domain of the following Figure.
+### b. Solve the Poisson equation $u_{xx} + u_{yy} = -10(x^2 + y^2 + 10)$ in the domain of the following Figure
 
 **Given:**
-- Domain: $0 \leq x \leq 3$, $0 \leq y \leq 3$
-- Grid spacing: $h = 1$
-- Boundary condition: $u = 0$ on all boundaries
-- Source function: $f(x,y) = -10(x^2 + y^2 + 10)$
+
+* Domain: $0 \leq x \leq 3$, $0 \leq y \leq 3$
+* Grid spacing: $h = 1$
+* Boundary condition: $u = 0$ on all boundaries
+* Source function: $f(x,y) = -10(x^2 + y^2 + 10)$
 
 **Interior Points:**
 
@@ -515,12 +567,13 @@ $$
 
 ## 6 _____
 
-### a. From the Taylor series for $y(x)$, find $y(0.1)$ correct to four decimal places if $y(x)$ satisfies $y' = x - y^2$ and $y(0) = 1$.
+### a. From the Taylor series for $y(x)$, find $y(0.1)$ correct to four decimal places if $y(x)$ satisfies $y' = x - y^2$ and $y(0) = 1$
 
 **Given:**
-- $y' = x - y^2$
-- $y(0) = 1$
-- Find $y(0.1)$
+
+* $y' = x - y^2$
+* $y(0) = 1$
+* Find $y(0.1)$
 
 **Taylor Series Formula:**
 $$
@@ -548,13 +601,14 @@ $$
 **Result:**
 **$y(0.1) = 0.9138$**
 
-### b. Using the modified Euler method find the value of $y$ satisfying the equation, $dy/dx = \log_e(x+y)$ for $x = 1.2$ and $x = 1.4$, correct to four decimal places, take $h = 0.2$ and $y(1) = 2$.
+### b. Using the modified Euler method find the value of $y$ satisfying the equation, $dy/dx = \log_e(x+y)$ for $x = 1.2$ and $x = 1.4$, correct to four decimal places, take $h = 0.2$ and $y(1) = 2$
 
 **Given:**
-- $f(x,y) = \log_e(x+y)$
-- $x_0 = 1, y_0 = 2$
-- $h = 0.2$
-- Find $y(1.2)$ and $y(1.4)$
+
+* $f(x,y) = \log_e(x+y)$
+* $x_0 = 1, y_0 = 2$
+* $h = 0.2$
+* Find $y(1.2)$ and $y(1.4)$
 
 **Modified Euler Formula (Heun's Method):**
 $$
@@ -593,11 +647,12 @@ $$
 
 ## 7 _____
 
-### a. Compute $y(0.2)$ by Runge-Kutta method of 4th order for the differential equation $\frac{dy}{dx} = xy + y^2, y(0) = 1$.
+### a. Compute $y(0.2)$ by Runge-Kutta method of 4th order for the differential equation $\frac{dy}{dx} = xy + y^2, y(0) = 1$
 
 **Given:**
-- $f(x,y) = xy + y^2$
-- $x_0 = 0, y_0 = 1, h = 0.2$
+
+* $f(x,y) = xy + y^2$
+* $x_0 = 0, y_0 = 1, h = 0.2$
 
 **RK4 Formulas:**
 $$
@@ -631,7 +686,7 @@ $$
 **Result:**
 **$y(0.2) = 1.2774$**
 
-### b. The velocity $v$ ms$^{-1}$ of a moving car is given at fixed intervals of time $t$ (second) as follows. Find the distance covered by the car in 12 seconds.
+### b. The velocity $v$ ms$^{-1}$ of a moving car is given at fixed intervals of time $t$ (second) as follows. Find the distance covered by the car in 12 seconds
 
 **Given Data:**
 
@@ -658,7 +713,7 @@ $$
 **Result:**
 **Distance = 552 meters**
 
-### c. What do you mean by interpolation? Apply Lagrange's formula to find the form of the function $f(x)$ using the following table:
+### c. What do you mean by interpolation? Apply Lagrange's formula to find the form of the function $f(x)$ using the following table
 
 **Interpolation:**
 Interpolation is a method of estimating unknown values that fall between known data points. It constructs new data points within the range of a discrete set of known data points.
@@ -699,33 +754,35 @@ f(x) = x^2 + 2x + 3
 $$
 
 **Verification:**
-- $f(0) = 0 + 0 + 3 = 3$ ✓
-- $f(1) = 1 + 2 + 3 = 6$ ✓
-- $f(2) = 4 + 4 + 3 = 11$ ✓
-- $f(3) = 9 + 6 + 3 = 18$ ✓
-- $f(4) = 16 + 8 + 3 = 27$ ✓
+
+* $f(0) = 0 + 0 + 3 = 3$ ✓
+* $f(1) = 1 + 2 + 3 = 6$ ✓
+* $f(2) = 4 + 4 + 3 = 11$ ✓
+* $f(3) = 9 + 6 + 3 = 18$ ✓
+* $f(4) = 16 + 8 + 3 = 27$ ✓
 
 **Result:**
 **$f(x) = x^2 + 2x + 3$**
-
 
 # Solve for 2023
 
 ## 1 _____
 
-### a. Find the real root of the equation $\cos x = 3x - 1$ correct to five decimal point using Fixed Point Iteration method.
+### a. Find the real root of the equation $\cos x = 3x - 1$ correct to five decimal point using Fixed Point Iteration method
 
 **Formulation:**
 Rewrite the equation in the form $x = g(x)$:
 
-
-$$3x = \cos x + 1 \implies x = \frac{\cos x + 1}{3}$$
-
+$$
+3x = \cos x + 1 \implies x = \frac{\cos x + 1}{3}
+$$
 
 Let $g(x) = \frac{\cos x + 1}{3}$. Since $|g'(x)| = \left|-\frac{\sin x}{3}\right| \le \frac{1}{3} < 1$, the iteration will converge. We will use an initial guess of $x_0 = 0.6$ (in radians).
 
 **Iterations:**
-$x_{n+1} = \frac{\cos(x_n) + 1}{3}$
+$$
+x_{n+1} = \frac{\cos(x_n) + 1}{3}
+$$
 
 | $n$ | $x_n$ | $x_{n+1} = g(x_n)$ |
 | :--- | :--- | :--- |
@@ -740,13 +797,21 @@ $x_{n+1} = \frac{\cos(x_n) + 1}{3}$
 **Result:**
 The root, correct to five decimal places, is **$0.60711$**.
 
-### b. Find the solution to the following system of equation using the Gauss-Seidel Method correct to four decimal places.
-$6x + 15y + 2z = 72$
-$x + y + 54z = 110$
-$27x + 6y - z = 85$
+### b. Find the solution to the following system of equation using the Gauss-Seidel Method correct to four decimal places
+
+$$
+6x + 15y + 2z = 72
+$$
+$$
+x + y + 54z = 110
+$$
+$$
+27x + 6y - z = 85
+$$
 
 **Rearrangement for Diagonal Dominance:**
 To ensure convergence, rearrange the equations so the strictly largest coefficients are on the diagonal:
+
 1. $27x + 6y - z = 85 \implies x_{new} = \frac{85 - 6y_{old} + z_{old}}{27}$
 2. $6x + 15y + 2z = 72 \implies y_{new} = \frac{72 - 6x_{new} - 2z_{old}}{15}$
 3. $x + y + 54z = 110 \implies z_{new} = \frac{110 - x_{new} - y_{new}}{54}$
@@ -767,58 +832,73 @@ The solution is **$x = 2.4255, y = 3.5730, z = 1.9260$**.
 
 ## 2 _____
 
-### a. Solve the following equations using Gauss-Jordan Elimination method:
-$2x_1 + x_2 - 3x_3 = 11$
-$4x_1 - 2x_2 + 3x_3 = 8$
-$-2x_1 + 2x_2 - x_3 = -6$
+### a. Solve the following equations using Gauss-Jordan Elimination method
+
+$$
+2x_1 + x_2 - 3x_3 = 11
+$$
+$$
+4x_1 - 2x_2 + 3x_3 = 8
+$$
+$$
+-2x_1 + 2x_2 - x_3 = -6
+$$
 
 **Step 1: Augmented Matrix**
 
-
-$$\begin{bmatrix} 2 & 1 & -3 & | & 11 \\ 4 & -2 & 3 & | & 8 \\ -2 & 2 & -1 & | & -6 \end{bmatrix}$$
+$$
+\begin{bmatrix} 2 & 1 & -3 & | & 11 \\ 4 & -2 & 3 & | & 8 \\ -2 & 2 & -1 & | & -6 \end{bmatrix}
+$$
 
 **Step 2: Eliminate $x_1$ from Rows 2 and 3**
 
 $R_2 \leftarrow R_2 - 2R_1$
 $R_3 \leftarrow R_3 + R_1$
-$$\begin{bmatrix} 2 & 1 & -3 & | & 11 \\ 0 & -4 & 9 & | & -14 \\ 0 & 3 & -4 & | & 5 \end{bmatrix}$$
+$$
+\begin{bmatrix} 2 & 1 & -3 & | & 11 \\ 0 & -4 & 9 & | & -14 \\ 0 & 3 & -4 & | & 5 \end{bmatrix}
+$$
 
 **Step 3: Normalize Pivot Rows 1 and 2**
 
-
 $R_1 \leftarrow R_1 / 2$
 $R_2 \leftarrow R_2 / -4$
-$$\begin{bmatrix} 1 & 0.5 & -1.5 & | & 5.5 \\ 0 & 1 & -2.25 & | & 3.5 \\ 0 & 3 & -4 & | & 5 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 0.5 & -1.5 & | & 5.5 \\ 0 & 1 & -2.25 & | & 3.5 \\ 0 & 3 & -4 & | & 5 \end{bmatrix}
+$$
 
 **Step 4: Eliminate $x_2$ from Rows 1 and 3**
 
-
 $R_1 \leftarrow R_1 - 0.5R_2$
 $R_3 \leftarrow R_3 - 3R_2$
-$$\begin{bmatrix} 1 & 0 & -0.375 & | & 3.75 \\ 0 & 1 & -2.25 & | & 3.5 \\ 0 & 0 & 2.75 & | & -5.5 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 0 & -0.375 & | & 3.75 \\ 0 & 1 & -2.25 & | & 3.5 \\ 0 & 0 & 2.75 & | & -5.5 \end{bmatrix}
+$$
 
 **Step 5: Normalize Pivot Row 3**
 
-
 $R_3 \leftarrow R_3 / 2.75$
-$$\begin{bmatrix} 1 & 0 & -0.375 & | & 3.75 \\ 0 & 1 & -2.25 & | & 3.5 \\ 0 & 0 & 1 & | & -2 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 0 & -0.375 & | & 3.75 \\ 0 & 1 & -2.25 & | & 3.5 \\ 0 & 0 & 1 & | & -2 \end{bmatrix}
+$$
 
 **Step 6: Eliminate $x_3$ from Rows 1 and 2**
 
-
 $R_1 \leftarrow R_1 + 0.375R_3$
 $R_2 \leftarrow R_2 + 2.25R_3$
-$$\begin{bmatrix} 1 & 0 & 0 & | & 3 \\ 0 & 1 & 0 & | & -1 \\ 0 & 0 & 1 & | & -2 \end{bmatrix}$$
+$$
+\begin{bmatrix} 1 & 0 & 0 & | & 3 \\ 0 & 1 & 0 & | & -1 \\ 0 & 0 & 1 & | & -2 \end{bmatrix}
+$$
 
 **Result:**
 **$x_1 = 3, x_2 = -1, x_3 = -2$**
 
-### b. Find a root of the equation $x^6 - x - 1 = 0$ using Secant method approximations: $x_0 = 2$ and $x_1 = 1$.
+### b. Find a root of the equation $x^6 - x - 1 = 0$ using Secant method approximations: $x_0 = 2$ and $x_1 = 1$
 
 **Secant Method Formula:**
 
-
-$$x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}$$
+$$
+x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}
+$$
 Given $f(x) = x^6 - x - 1$, $x_0 = 2$, and $x_1 = 1$.
 
 **Iterations:**
@@ -838,9 +918,10 @@ The root converges to **$1.13472$**.
 
 ## 3 _____
 
-### a. Find a root of the equation $x^3 - 3x - 5 = 0$ using the Newton-Raphson method, correct up to four decimal places, starting with $x_0 = 2$.
+### a. Find a root of the equation $x^3 - 3x - 5 = 0$ using the Newton-Raphson method, correct up to four decimal places, starting with $x_0 = 2$
 
 **Formulation:**
+
 * Function: $f(x) = x^3 - 3x - 5$
 * Derivative: $f'(x) = 3x^2 - 3$
 * Newton-Raphson Formula: $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$
@@ -857,38 +938,49 @@ The root converges to **$1.13472$**.
 **Result:**
 The root, correct to four decimal places, is **$2.2790$**.
 
-### b. Solve the following system of linear equations using Cholesky's factorization method.
+### b. Solve the following system of linear equations using Cholesky's factorization method
 
 > **Note on Cholesky Method:** The Cholesky factorization ($A=LL^T$) mathematically requires a symmetric positive-definite matrix. The given matrix is not symmetric ($A_{12} \neq A_{21}$). The solution below uses the general **LU Decomposition (Doolittle Method)** to solve the system, as standard Cholesky is impossible here.
 
 **System:**
-$2x - 6y + 8z = 24$
-$5x + 4y - 3z = 2$
-$3x + y + 2z = 16$
+$$
+2x - 6y + 8z = 24
+$$
+$$
+5x + 4y - 3z = 2
+$$
+$$
+3x + y + 2z = 16
+$$
 
 **1. LU Decomposition ($A = LU$):**
 
-
-$$A = \begin{bmatrix} 2 & -6 & 8 \\ 5 & 4 & -3 \\ 3 & 1 & 2 \end{bmatrix}$$
-
+$$
+A = \begin{bmatrix} 2 & -6 & 8 \\ 5 & 4 & -3 \\ 3 & 1 & 2 \end{bmatrix}
+$$
 
 Using the Doolittle algorithm, we decompose $A$ into Lower ($L$) and Upper ($U$) triangular matrices:
 
-
-$$L = \begin{bmatrix} 1 & 0 & 0 \\ 2.5 & 1 & 0 \\ 1.5 & \frac{10}{19} & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & -6 & 8 \\ 0 & 19 & -23 \\ 0 & 0 & \frac{40}{19} \end{bmatrix}$$
+$$
+L = \begin{bmatrix} 1 & 0 & 0 \\ 2.5 & 1 & 0 \\ 1.5 & \frac{10}{19} & 1 \end{bmatrix}, \quad U = \begin{bmatrix} 2 & -6 & 8 \\ 0 & 19 & -23 \\ 0 & 0 & \frac{40}{19} \end{bmatrix}
+$$
 
 **2. Solve $Ly = B$ (Forward Substitution):**
 
+$$
+\begin{bmatrix} 1 & 0 & 0 \\ 2.5 & 1 & 0 \\ 1.5 & \frac{10}{19} & 1 \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \\ y_3 \end{bmatrix} = \begin{bmatrix} 24 \\ 2 \\ 16 \end{bmatrix}
+$$
 
-$$\begin{bmatrix} 1 & 0 & 0 \\ 2.5 & 1 & 0 \\ 1.5 & \frac{10}{19} & 1 \end{bmatrix} \begin{bmatrix} y_1 \\ y_2 \\ y_3 \end{bmatrix} = \begin{bmatrix} 24 \\ 2 \\ 16 \end{bmatrix}$$
 * $y_1 = \mathbf{24}$
 * $2.5(24) + y_2 = 2 \implies y_2 = \mathbf{-58}$
 * $1.5(24) + \frac{10}{19}(-58) + y_3 = 16 \implies 36 - \frac{580}{19} + y_3 = 16 \implies y_3 = \mathbf{\frac{200}{19}}$
 
 **3. Solve $Ux = y$ (Backward Substitution):**
 
+$$
+\begin{bmatrix} 2 & -6 & 8 \\ 0 & 19 & -23 \\ 0 & 0 & \frac{40}{19} \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 24 \\ -58 \\ \frac{200}{19} \end{bmatrix}
+$$
 
-$$\begin{bmatrix} 2 & -6 & 8 \\ 0 & 19 & -23 \\ 0 & 0 & \frac{40}{19} \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 24 \\ -58 \\ \frac{200}{19} \end{bmatrix}$$
 * $\frac{40}{19}z = \frac{200}{19} \implies \mathbf{z = 5}$
 * $19y - 23(5) = -58 \implies 19y = 57 \implies \mathbf{y = 3}$
 * $2x - 6(3) + 8(5) = 24 \implies 2x + 22 = 24 \implies \mathbf{x = 1}$
@@ -898,11 +990,12 @@ $$\begin{bmatrix} 2 & -6 & 8 \\ 0 & 19 & -23 \\ 0 & 0 & \frac{40}{19} \end{bmatr
 
 ## 4 _____
 
-### a. Evaluate $\int_0^1 e^{-x^2} dx$ by using Simpson's 1/3 and Simpson's 3/8 rule taking n=4.
+### a. Evaluate $\int_0^1 e^{-x^2} dx$ by using Simpson's 1/3 and Simpson's 3/8 rule taking n=4
 
-> **Note on Simpson's 3/8 Rule:** The 3/8 rule requires the number of subintervals ($n$) to be a multiple of 3. It cannot be mathematically applied to $n=4$ subintervals. To demonstrate the method, the 3/8 calculation below assumes $n=3$. 
+> **Note on Simpson's 3/8 Rule:** The 3/8 rule requires the number of subintervals ($n$) to be a multiple of 3. It cannot be mathematically applied to $n=4$ subintervals. To demonstrate the method, the 3/8 calculation below assumes $n=3$.
 
 **1. Simpson's 1/3 Rule (using $n=4$):**
+
 * Step size $h = \frac{1 - 0}{4} = 0.25$
 * $x_0 = 0.00 \implies y_0 = 1.00000$
 * $x_1 = 0.25 \implies y_1 = 0.93941$
@@ -915,6 +1008,7 @@ $$I \approx \frac{0.25}{3} [1.00000 + 4(0.93941 + 0.56978) + 2(0.77880) + 0.3678
 $$I \approx 0.08333 [1.00000 + 6.03676 + 1.55760 + 0.36788] \approx \mathbf{0.74686}$$  
 
 **2. Simpson's 3/8 Rule (demonstration using $n=3$):**
+
 * Step size $h = \frac{1 - 0}{3} = \frac{1}{3}$
 * $x_0 = 0 \implies y_0 = 1.00000$
 * $x_1 = 1/3 \implies y_1 = 0.89484$
@@ -925,9 +1019,10 @@ $$I \approx \frac{3h}{8} [y_0 + 3y_1 + 3y_2 + y_3]$$
 $$I \approx \frac{1}{8} [1.00000 + 3(0.89484) + 3(0.64118) + 0.36788]$$  
 $$I \approx 0.125 [1.00000 + 2.68452 + 1.92354 + 0.36788] \approx \mathbf{0.74699}$$  
 
-### b. Use the Runge-Kutta method of 4th order for the differential equation $\frac{dy}{dx} = \frac{y^2-x^2}{y^2+x^2}$ with $y(0) = 1$ at $x = 0.2$ and $x = 0.4$.
+### b. Use the Runge-Kutta method of 4th order for the differential equation $\frac{dy}{dx} = \frac{y^2-x^2}{y^2+x^2}$ with $y(0) = 1$ at $x = 0.2$ and $x = 0.4$
 
 **Formulation:**
+
 * $f(x,y) = \frac{y^2-x^2}{y^2+x^2}$
 * $x_0 = 0, y_0 = 1$, Step size $h = 0.2$
 
@@ -955,19 +1050,21 @@ $$y(0.2) = 1 + \frac{1}{6}(0.20000 + 0.39344 + 0.39342 + 0.18913) = \mathbf{1.19
 $$y(0.4) = y_1 + \frac{1}{6}(k_1 + 2k_2 + 2k_3 + k_4)$$  
 $$y(0.4) = 1.19600 + \frac{1}{6}(0.18912 + 0.35898 + 0.35870 + 0.16881) = \mathbf{1.37527}$$  
 
-
 ## 5 _____
 
-### a. Solve the following system of linear equations using Cramer's rule:
-$5x - 2y + 9z = -7$
+### a. Solve the following system of linear equations using Cramer's rule
 
+$$
+5x - 2y + 9z = -7
+$$
 
-$-2x + y - 4z = 5$
+$$
+-2x + y - 4z = 5
+$$
 
-
-$3x - 10y - 8z = 0$
-
-
+$$
+3x - 10y - 8z = 0
+$$
 
 **1. Calculate the main determinant ($D$):**  
 $$
@@ -988,8 +1085,6 @@ D_x &= -7(-48) + 2(-40) - 450 = 336 - 80 - 450 = \mathbf{-194}
 \end{aligned}
 $$
 
-
-
 $$
 \begin{aligned}
 D_y &= \begin{vmatrix} 5 & -7 & 9 \\ -2 & 5 & -4 \\ 3 & 0 & -8 \end{vmatrix} \\
@@ -997,8 +1092,6 @@ D_y &= 5(-40 - 0) - (-7)(16 - (-12)) + 9(0 - 15) \\
 D_y &= -200 + 7(28) - 135 = -200 + 196 - 135 = \mathbf{-139}
 \end{aligned}
 $$
-
-
 
 $$
 \begin{aligned}
@@ -1008,35 +1101,35 @@ D_z &= 5(50) + 2(-15) - 7(17) = 250 - 30 - 119 = \mathbf{101}
 \end{aligned}
 $$
 
-
-
 **3. Apply Cramer's Rule Formula ($x = D_x/D$, etc.):**
+
 * $x = \frac{-194}{-31} = \mathbf{\frac{194}{31}}$
 * $y = \frac{-139}{-31} = \mathbf{\frac{139}{31}}$
 * $z = \frac{101}{-31} = \mathbf{-\frac{101}{31}}$
 
 ---
 
-### b. Using Taylor series method with the first five terms in the expansion find $y(0.1)$ correct to three decimal place, given that $\frac{dy}{dx} = e^x - y^2$, $y(0)=1$.
+### b. Using Taylor series method with the first five terms in the expansion find $y(0.1)$ correct to three decimal place, given that $\frac{dy}{dx} = e^x - y^2$, $y(0)=1$
 
 **Formulation:**
 The Taylor series expansion up to the first five terms is:
 
-
-$$y(x) \approx y_0 + h y'_0 + \frac{h^2}{2!} y''_0 + \frac{h^3}{3!} y'''_0 + \frac{h^4}{4!} y^{(4)}_0$$
-
+$$
+y(x) \approx y_0 + h y'_0 + \frac{h^2}{2!} y''_0 + \frac{h^3}{3!} y'''_0 + \frac{h^4}{4!} y^{(4)}_0
+$$
 
 Given $x_0 = 0$, $y_0 = 1$, and step size $h = 0.1$.
 
 **Calculate Derivatives at $x=0$:**
-1.  **$y$ term:** $y_0 = \mathbf{1}$
-2.  **1st Derivative:** $y' = e^x - y^2$
+
+1. **$y$ term:** $y_0 = \mathbf{1}$
+2. **1st Derivative:** $y' = e^x - y^2$
     * $y'_0 = e^0 - (1)^2 = 1 - 1 = \mathbf{0}$
-3.  **2nd Derivative:** $y'' = e^x - 2yy'$
+3. **2nd Derivative:** $y'' = e^x - 2yy'$
     * $y''_0 = e^0 - 2(1)(0) = 1 - 0 = \mathbf{1}$
-4.  **3rd Derivative:** $y''' = e^x - 2(y'^2 + yy'')$
+4. **3rd Derivative:** $y''' = e^x - 2(y'^2 + yy'')$
     * $y'''_0 = e^0 - 2(0^2 + (1)(1)) = 1 - 2 = \mathbf{-1}$
-5.  **4th Derivative:** $y^{(4)} = e^x - 2(2y'y'' + y'y'' + yy''') = e^x - 6y'y'' - 2yy'''$
+5. **4th Derivative:** $y^{(4)} = e^x - 2(2y'y'' + y'y'' + yy''') = e^x - 6y'y'' - 2yy'''$
     * $y^{(4)}_0 = e^0 - 6(0)(1) - 2(1)(-1) = 1 - 0 + 2 = \mathbf{3}$
 
 **Substitute into Taylor Series:**
@@ -1053,17 +1146,19 @@ Correct to three decimal places, $y(0.1) = \mathbf{1.005}$.
 
 ## 6 _____
 
-### a. Find $y(0.2)$ for $y' = x - y^2$, $y(0) = 1$, with step length $0.1$ using Modified Euler method.
+### a. Find $y(0.2)$ for $y' = x - y^2$, $y(0) = 1$, with step length $0.1$ using Modified Euler method
 
 Using the Predictor-Corrector approach for the Modified Euler Method:
+
 * $f(x, y) = x - y^2$
 * $x_0 = 0, y_0 = 1, h = 0.1$
 
 **Step 1: Calculate $y$ at $x_1 = 0.1$**
+
 * **Predictor:** $y_1^{(0)} = y_0 + h f(x_0, y_0) = 1 + 0.1(0 - 1^2) = \mathbf{0.9}$
 
 * **Corrector 1:** $y_1^{(1)} = y_0 + \frac{h}{2}[f(x_0, y_0) + f(x_1, y_1^{(0)})]$
-    * $y_1^{(1)} = 1 + 0.05[-1 + (0.1 - 0.9^2)] = 1 + 0.05(-1.71) = \mathbf{0.9145}$
+  * $y_1^{(1)} = 1 + 0.05[-1 + (0.1 - 0.9^2)] = 1 + 0.05(-1.71) = \mathbf{0.9145}$
 
 * **Corrector 2:** $y_1^{(2)} = 1 + 0.05[-1 + (0.1 - 0.9145^2)] = 1 + 0.05(-1.7363) = \mathbf{0.9132}$
 
@@ -1072,11 +1167,12 @@ Using the Predictor-Corrector approach for the Modified Euler Method:
 *(Converged: $y_1 \approx 0.9133$)*
 
 **Step 2: Calculate $y$ at $x_2 = 0.2$**
+
 * **Predictor:** $y_2^{(0)} = y_1 + h f(x_1, y_1) = 0.9133 + 0.1(0.1 - 0.9133^2) = \mathbf{0.8399}$
 * **Corrector 1:** $y_2^{(1)} = y_1 + \frac{h}{2}[f(x_1, y_1) + f(x_2, y_2^{(0)})]$
-    * $f(x_1, y_1) = 0.1 - 0.9133^2 = -0.7341$
-    * $f(x_2, y_2^{(0)}) = 0.2 - 0.8399^2 = -0.5054$
-    * $y_2^{(1)} = 0.9133 + 0.05[-0.7341 - 0.5054] = 0.9133 + 0.05(-1.2395) = \mathbf{0.8513}$
+  * $f(x_1, y_1) = 0.1 - 0.9133^2 = -0.7341$
+  * $f(x_2, y_2^{(0)}) = 0.2 - 0.8399^2 = -0.5054$
+  * $y_2^{(1)} = 0.9133 + 0.05[-0.7341 - 0.5054] = 0.9133 + 0.05(-1.2395) = \mathbf{0.8513}$
 * **Corrector 2:** $y_2^{(2)} = 0.9133 + 0.05[-0.7341 + (0.2 - 0.8513^2)] = 0.9133 + 0.05(-1.2588) = \mathbf{0.8504}$
 * **Corrector 3:** $y_2^{(3)} = 0.9133 + 0.05[-0.7341 + (0.2 - 0.8504^2)] = 0.9133 + 0.05(-1.2573) = \mathbf{0.8504}$
 
@@ -1085,10 +1181,11 @@ $y(0.2) \approx \mathbf{0.8504}$.
 
 ---
 
-### b. Use Picard's method up to $3^{rd}$ approximation to find the value of $y$ when $x = 0.25$, given that $\frac{dy}{dx} = x^2y - y$ and $y(0) = 1$.
+### b. Use Picard's method up to $3^{rd}$ approximation to find the value of $y$ when $x = 0.25$, given that $\frac{dy}{dx} = x^2y - y$ and $y(0) = 1$
 
 **Formulation:**
 The integral equation for Picard's method is $y_n(x) = y_0 + \int_0^x f(t, y_{n-1}(t)) dt$.
+
 * $f(t, y) = y(t^2 - 1)$
 * $y_0(x) = 1$
 
@@ -1131,9 +1228,10 @@ $$
 
 ## 7 _____
 
-### a. Use Euler's method to compute $y(0.9)$ from the following differential equation: $\frac{dy}{dx} = x^2, y(0) = 1$ and $h = 0.3$.
+### a. Use Euler's method to compute $y(0.9)$ from the following differential equation: $\frac{dy}{dx} = x^2, y(0) = 1$ and $h = 0.3$
 
 **Formulation:**
+
 * Euler's Method Formula: $y_{n+1} = y_n + h \cdot f(x_n, y_n)$
 * Given: $f(x, y) = x^2$, Initial condition $x_0 = 0, y_0 = 1$, Step size $h = 0.3$. Target is $x = 0.9$.
 
@@ -1155,14 +1253,17 @@ $$
     $$y_3 = y(0.9) = y_2 + h \cdot f(x_2, y_2) = 1.027 + 0.3(0.36) = 1.027 + 0.108 = \mathbf{1.135}$$
 
 **Result:**
-$$y(0.9) = \mathbf{1.135}$$
+$$
+y(0.9) = \mathbf{1.135}
+$$
 
 ---
 
-### b. Use Picard's method to solve $\frac{dy}{dx} = x + y^2, y(0) = 1$ up to $3^{rd}$ approximation.
+### b. Use Picard's method to solve $\frac{dy}{dx} = x + y^2, y(0) = 1$ up to $3^{rd}$ approximation
 
 **Formulation:**
 Picard's iterative formula is: $y_n(x) = y_0 + \int_{0}^{x} f(t, y_{n-1}(t)) \, dt$
+
 * Given: $f(t, y) = t + y^2$, $x_0 = 0$, $y_0 = 1$.
 
 **1st Approximation ($y_1$):**
@@ -1194,18 +1295,24 @@ y_3(x) &= 1 + \int_0^x \left[ t + \left( 1 + t + \frac{3t^2}{2} + \frac{2t^3}{3}
 \end{aligned}
 $$
 Expanding the integrand and integrating term by term yields the full 3rd approximation polynomial:
-$$y_3(x) = \mathbf{1 + x + \frac{3}{2}x^2 + \frac{4}{3}x^3 + \frac{13}{12}x^4 + \frac{49}{60}x^5 + \frac{13}{30}x^6 + \frac{233}{1260}x^7 + \frac{29}{480}x^8 + \frac{31}{2160}x^9 + \frac{1}{400}x^{10} + \frac{1}{4400}x^{11}}$$
+$$
+y_3(x) = \mathbf{1 + x + \frac{3}{2}x^2 + \frac{4}{3}x^3 + \frac{13}{12}x^4 + \frac{49}{60}x^5 + \frac{13}{30}x^6 + \frac{233}{1260}x^7 + \frac{29}{480}x^8 + \frac{31}{2160}x^9 + \frac{1}{400}x^{10} + \frac{1}{4400}x^{11}}
+$$
 
 ---
 
-### c. Write down the formula for Modified Euler's method.
+### c. Write down the formula for Modified Euler's method
 
 The Modified Euler method (also known as Heun's method or the predictor-corrector method) is given by a two-step formula to calculate $y_{n+1}$:
 
 **1. Predictor Equation** (calculates an initial estimate using standard Euler):
-$$y_{n+1}^{(0)} = y_n + h \cdot f(x_n, y_n)$$
+$$
+y_{n+1}^{(0)} = y_n + h \cdot f(x_n, y_n)
+$$
 
 **2. Corrector Equation** (improves the estimate by averaging the slopes):
-$$y_{n+1}^{(k+1)} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_{n+1}^{(k)}) \right]$$
+$$
+y_{n+1}^{(k+1)} = y_n + \frac{h}{2} \left[ f(x_n, y_n) + f(x_{n+1}, y_{n+1}^{(k)}) \right]
+$$
 
 *(Note: The corrector step can be iterated $k$ times until the value converges, or simply applied once. If applied once, the combined formula is $y_{n+1} = y_n + \frac{h}{2} [ f(x_n, y_n) + f(x_{n+1}, y_n + hf(x_n, y_n)) ]$ ).*
